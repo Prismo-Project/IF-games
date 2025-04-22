@@ -1,1 +1,85 @@
 @import './base.css';
+
+/* Containers */
+
+h1 {
+    text-align: center;
+    padding: 15px 0 0;
+}
+  
+.wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+  
+.img img {
+    width: 170px;
+    height: auto;
+}
+  
+.img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+  
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    justify-items: center;
+}
+  
+.card {
+    display: flex;
+    flex-direction: column;
+    border: px solid #ddd;
+    padding: 35px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+    background-color: #fff;
+}
+  
+.card h2 {
+    color: black;
+    text-align: left;
+    font-size: 1rem;
+}
+  
+.card h3 {
+    color: black;
+    font-size: 0.8rem;
+}
+  
+.card p.autor {
+    color: #4F4C57;
+    font-size: 0.5rem;
+}
+  
+.card:hover {
+    transform: scale(1.02);
+}
+  
+.comprar {
+    background-color: #28a745;
+    color: white;
+    padding: 8px 56px;
+    cursor: pointer;
+    margin-top: auto;
+    border: none;
+    font-size: 0.9rem;
+    outline: none;
+}
+  
+.comprar:focus {
+    outline: none;
+    box-shadow: none;
+}
+  
+.comprar:hover {
+    background-color: #218838;
+}
+
+/* FIM DOS CONTAINERS */

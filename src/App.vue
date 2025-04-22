@@ -1,6 +1,8 @@
 <script setup>
 import { ref } from "vue";
 
+/* Containers */
+
 const autor1 = "Cassandra Clare"
 const valorPadrao = "23.42"
 
@@ -25,78 +27,67 @@ const items = ref([
     titulo: "City Of Fallen Angels",
     autor: autor1,
     valor: "13.94"
+  },
+  {
+    id: 4,
+    livro: 'src/Images/NonaTheNinth.png',
+    titulo: "Nona the Ninth",
+    autor: autor1,
+    valor: "16.84"
+  },
+  {
+    id: 5,
+    livro: 'src/Images/HarlemShuffle.png',
+    titulo: "Harlem Shuffle  ",
+    autor: "Colson Whitehead",
+    valor: "26.92"
+  },
+  {
+    id: 6,
+    livro: 'src/Images/TwoOldWomem.png',
+    titulo: "Two Old Women",
+    autor: "Velma Walls",
+    valor: "13.95"
+  },
+  {
+    id: 7,
+    livro: 'src/Images/CarrieSotoIsBack.png',
+    titulo: "Carrie Soto Is Back",
+    autor: "Taylor Jenkirs Reid",
+    valor: "26.04"
+  },
+  {
+    id: 8,
+    livro: 'src/Images/BookLovers.png',
+    titulo: "Book Lovers",
+    autor: "Emily Henry",
+    valor: "15.81"
   }
 ])
+
+/* FIM DOS CONTAINERS */
 </script>
 
 <template>
+  <h1>Lançamentos</h1>
+  <div class="wrapper">
     <div class="grid-container">
       <article v-for="item in items" :key="item.id" class="card">
-        <img :src=" item.livro " alt="Livro" class="livros" width="150">
-      <div class="text">
+        <div class="img">
+          <img :src="item.livro" alt="Livro" class="livros" width="150">
+        </div>
         <h2>{{ item.titulo }}</h2>
-      <p class="autor">{{ item.autor }}</p>
-      <h3>R${{ item.valor }}</h3>
-      <p class="comprar">Comprar</p>
-      </div>
-        
-      
-    </article>
+        <div class="text">
+          <p class="autor">{{ item.autor }}</p>
+          <h3>R${{ item.valor }}</h3>
+          <button class="comprar">Comprar</button>
+        </div>
+      </article>
     </div>
+  </div>
+
 </template>
 
 <style scoped>
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 20px;
-  padding: 20px;
-}
 
-/** .card.livros{
-  align-items: center;
-} */
-
-.card {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #ddd;
-  padding: 15px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease;
-  background-color: #fff;
-}
-
-.card h2 {
-  color: black;
-  text-align: left;
-  font-size: 1rem;
-}
-
-.card h3 {
-  color: black;
-  font-size: 0.8rem;
-}
-
-.card p.autor {
-  color: #4F4C57;
-  font-size: 0.5rem;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.comprar {
-  background-color: #28a745;
-  color: white;
-  padding: 8px 56px;
-  cursor: pointer;
-  margin-top: auto;
-}
-
-.comprar:hover {
-  background-color: #218838;
-}
-</style>  
- 
+</style>
