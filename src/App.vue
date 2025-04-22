@@ -9,6 +9,16 @@ const filmes = ref([
 
 <template>
   <div class="cabeçario">
+    <h3>IFbooks</h3>
+    <p>apreço e leitura</p>
+    <input type="text" id="searchInput" placeholder="Pesquisar">
+    <button onclick="pesquisar()">Pesquisar</button>
+    <ul>
+      <li>Termos</li>
+      <li>Equipe</li>
+      <li>Envio</li>
+      <li>Devoluções</li>
+    </ul>
       
   </div>
   <div>
