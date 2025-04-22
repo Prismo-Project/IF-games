@@ -8,6 +8,15 @@ const filmes = ref([
 </script>
 
 <template>
+  <div class="cabeçario">
+      
+  </div>
+  <div>
+    <p>Autor de Abril</p>
+    <h1>Eric-Emanuel Schmitt</h1>
+    <p>Eric-Emmanuel Schmitt has been awarded more than 20 literary prizes and distinctions, and in 2001 he received the title of Chevalier des Arts et des Lettres. His books have been translated into over 40 languages.</p>
+    <button>Acessar página do livro</button>
+  </div>
   <h1>Hello World</h1>
   <article v-for="catalago in filmes" :key="catalag.id">
       <h3>{{  }}</h3>
