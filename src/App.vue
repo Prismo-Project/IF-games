@@ -8,9 +8,9 @@ const filmes = ref([
 </script>
 
 <template>
-  <div class="cabeçario">
+  <header>
     <h3>IFbooks</h3>
-    <p>apreço e leitura</p>
+    <p>apreço a <br> leitura</p>
     <input type="text" id="searchInput" placeholder="Pesquisar">
     <button onclick="pesquisar()">Pesquisar</button>
     <ul>
@@ -19,8 +19,9 @@ const filmes = ref([
       <li>Envio</li>
       <li>Devoluções</li>
     </ul>
+    <img src="../src/Images/icons/carrinho-de-compras.png" alt="">
       
-  </div>
+  </header>
   <div>
     <p>Autor de Abril</p>
     <h1>Eric-Emanuel Schmitt</h1>
@@ -36,5 +37,16 @@ const filmes = ref([
 </template>
 
 <style scoped>
+  header{
+    display: flex;
+  }
+  header ul{
+    display: flex;
+  }
+  header ul li{
+    padding: 30px;
+    list-style: none;
+    color: #7B7881;
+  }
 
 </style>
