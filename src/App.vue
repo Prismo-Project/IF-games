@@ -32,10 +32,9 @@ const filmes = ref([
       <h3>{{  }}</h3>
       <p>{{  }}</p>
     </article>
+   
 </template>
 
 <style scoped>
 
 </style>
-
--- :class="'artigo-' + noticia.id" class="card"
