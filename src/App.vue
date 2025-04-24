@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from "vue";
+import { useRouter } from 'node_modules/vue-router';
 
 /* Containers */
 
@@ -65,10 +66,23 @@ const items = ref([
   }
 ])
 
-/* FIM DOS CONTAINERS */
+/* FIM DOS CONTAINERS */  
+const router = useRouter();
+const redirecionarParaOutraPagina = () => {
+  router.push('src/components/CarrinhoCompras.vue');
+};
+
+const carrinho = ref([]);
+
+function adicionarAoCarrinho(item) {
+  carrinho.value.push(item);
+  console.log('Item adicionado ao carrinho (main):', carrinho.value);
+}
+
 </script>
 
 <template>
+  <button></button>
   <h1>Lançamentos</h1>
   <div class="wrapper">
     <div class="grid-container">
@@ -80,7 +94,7 @@ const items = ref([
         <div class="text">
           <p class="autor">{{ item.autor }}</p>
           <h3>R${{ item.valor }}</h3>
-          <button class="comprar">Comprar</button>
+          <button class="comprar" @click="adicionarAoCarrinho(item.id)">Comprar</button>
         </div>
       </article>
     </div>
