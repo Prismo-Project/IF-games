@@ -34,24 +34,27 @@ const filmes = ref([
   </div>
   <div class="footer">
     <footer>
+      <div class="dvisao1">
       <p>IFbooks</p>
-      <img src="Images/raphael_facebook.png" alt="facebook">
-      <img src="Images/Vector(1).png" alt="instagram">
-      <img src="Images/fa6-brands_square-twitter.png" alt="twitter">
+      <img src="../src/Images/raphael_facebook.png" alt="facebook">
+      <img src="../src/Images/Vector(1).png" alt="instagram">
+      <img src="../src/Images/fa6-brands_square-twitter.png" alt="twitter">
+     </div>
+     <div class="divisao2">
       <p>Contato</p>
-      <img src="Images/Icon.png" alt="Telefone">
+      <img src="../src/Images/Icon.png" alt="Telefone">
       <p>+55 47 40045263</p>
-      <img src="Images/Clock.png" alt="Relógio">
+      <img src="../src/Images/Clock.png" alt="Relógio">
       <p>8h às 23h - Seg a Sex</p>
-      <img src="Images/Mail.png" alt="Email">
+      <img src="../src/Images/Mail.png" alt="Email">
       <p>contato@ifbooks.com</p>
-      <img src="Images/paipalCard-Logo.png" alt="PayPal">
-      <img src="Images/MasterCard-Logo.png" alt="MasterCard">
-      <img src="Images/VISA-card-logo.png" alt="Visa">
+      <img src="../src/Images/paipalCard-Logo.png" alt="PayPal">
+      <img src="../src/Images/MasterCard-Logo.png" alt="MasterCard">
+      <img src="../src/Images/VISA-card-logo.png" alt="Visa">
       <p>&copy; Alguns direitos reservados. IFbooks 2025.</p>
+    </div>
     </footer>
   </div>
-  <h1>Hello World</h1>
   <article v-for="catalago in filmes" :key="catalag.id">
       <h3>{{  }}</h3>
       <p>{{  }}</p>
@@ -59,7 +62,11 @@ const filmes = ref([
 </template>
 
 <style scoped>
+.footer {
+  background-color: #27AE60; 
+  color: #fff;              
+  padding: 20px 0;         
+  display: flex;
+}
 
 </style>
-
--- :class="'artigo-' + noticia.id" class="card"
