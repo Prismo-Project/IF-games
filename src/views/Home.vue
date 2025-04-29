@@ -80,10 +80,10 @@ const redirecionarParaOutraPagina = () => {
 const carrinho = ref([]);
 
 function adicionarAoCarrinho(item) {
-  const valor = item.valor ? parseFloat(item.valor.replace(',', '.')) : 0; // Verifica se valor existe antes de tentar formatar
+  const valor = item.valor ? parseFloat(item.valor.replace(',', '.')) : 0; 
   const itemComValor = {
     ...item,
-    valor: valor // Converte para número
+    valor: valor 
   };
   carrinho.value.push(itemComValor);
   console.log('Item adicionado ao carrinho (main):', carrinho.value);
@@ -104,7 +104,7 @@ function adicionarAoCarrinho(item) {
         <div class="text">
           <p class="autor">{{ item.autor }}</p>
           <h3>R${{ item.valor }}</h3>
-          <button class="comprar" @click="adicionarAoCarrinho(item.id)">Comprar</button>
+          <button class="comprar" @click="adicionarAoCarrinho(item)">Comprar</button>
         </div>
       </article>
     </div>
