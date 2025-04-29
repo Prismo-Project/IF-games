@@ -10,15 +10,15 @@ const filmes = ref([
 <template>
 
   <header>
-    <h3>IFbooks</h3>
+    <h3><a href="#">IFbooks</a></h3>
     <p>apreço a <br> leitura</p>
     <input type="text" id="searchInput" placeholder="Pesquisar">
     <button onclick="pesquisar()"><img src="../src/Images/icons/procurar.png" alt=""></button>
     <ul>
-      <li>Termos</li>
-      <li>Equipe</li>
-      <li>Envio</li>
-      <span><li>Devoluções</li></span>
+      <li><a href="#">Termos</a></li>
+      <li><a href="#">Equipe</a></li>
+      <li><a href="#">Envio</a></li>
+      <span><li><a href="#">Devoluções</a></li></span>
     </ul>
     <span><a href="#"><img src="../src/Images/icons/carrinho-de-compras.png" alt=""></a></span>
     <span><a href="#"><img src="../src/Images/icons/coracao.png" alt=""></a></span>
@@ -37,12 +37,26 @@ const filmes = ref([
     <img src="../src/Images/book.png" alt="">
   </div>
    </div>
+   <div id="faixinha">
+   <ul>
+    <li><img src="../src/Images/icons/lado-do-caminhao.png" alt=""><a href="#"><h3>Frete grátis para SC</h3></a></li>
+    <li class="prioridade"><img src="../src/Images/icons/estrela.png" alt=""><a href="#"><h3>Livros recomendados</h3></a></li>
+    <li class="prioridade"><img src="../src/Images/icons/livro-aberto-capa.png" alt=""><a href="#"><h3>Mais vendidos</h3></a></li>
+   </ul>
+  </div>
   
 </template>
 
 <style scoped>
   template{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  }
+  a{
+    text-decoration: none;
+    color: #7B7881;
+  }
+  header h3 a{
+    color: #231F2D;
   }
   header{
     display: flex;
@@ -139,5 +153,27 @@ const filmes = ref([
   }
   div#banner div#image img{
     margin: 20px 0 0 350px;
+  }
+  div#faixinha ul{
+    display: flex;
+    border-bottom: #27AE60 2px solid;
+    padding: 75px 0 75px 250px;
+  }
+  div#faixinha ul li{
+    display: flex;
+  }
+  div#faixinha ul li img{
+    width: 40px;
+  }
+  div#faixinha ul li.prioridade{
+    border-left: #7B7881 2px solid; 
+    margin-left: 100px;
+    padding-left: 100px;
+  }
+  div#faixinha h3{
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #382C2C;
+    padding-left: 30px;
   }
 </style>
