@@ -96,16 +96,16 @@ function adicionarAoCarrinho(item) {
     <h3><a href="#">IFbooks</a></h3>
     <p>apreço a <br> leitura</p>
     <input type="text" id="searchInput" placeholder="Pesquisar">
-    <button onclick="pesquisar()"><img src="../src/Images/icons/procurar.png" alt=""></button>
+    <button onclick="pesquisar()"><img src="../Images/icons/procurar.png" alt=""></button>
     <ul>
       <li><a href="#">Termos</a></li>
       <li><a href="#">Equipe</a></li>
       <li><a href="#">Envio</a></li>
       <span><li><a href="#">Devoluções</a></li></span>
     </ul>
-    <span><a href="#"><img src="../src/Images/icons/carrinho-de-compras.png" alt=""></a></span>
-    <span><a href="#"><img src="../src/Images/icons/coracao.png" alt=""></a></span>
-    <a href="#"><img src="../src/Images/icons/do-utilizador.png" alt=""></a>
+    <span><a @click="redirecionarParaOutraPagina" href="#"><img src="../Images/icons/carrinho-de-compras.png" alt=""></a></span>
+    <span><a href="#"><img src="../Images/icons/coracao.png" alt=""></a></span>
+    <a href="#"><img src="../Images/icons/do-utilizador.png" alt=""></a>
   </header>
 
 
@@ -117,17 +117,16 @@ function adicionarAoCarrinho(item) {
     <button>Acessar página do livro</button>
   </div>
   <div id="image">
-    <img src="../src/Images/book.png" alt="">
+    <img src="../Images/book.png" alt="">
   </div>
    </div>
    <div id="faixinha">
    <ul>
-    <li><img src="../src/Images/icons/lado-do-caminhao.png" alt=""><a href="#"><h3>Frete grátis para SC</h3></a></li>
-    <li class="prioridade"><img src="../src/Images/icons/estrela.png" alt=""><a href="#"><h3>Livros recomendados</h3></a></li>
-    <li class="prioridade"><img src="../src/Images/icons/livro-aberto-capa.png" alt=""><a href="#"><h3>Mais vendidos</h3></a></li>
+    <li><img src="../Images/icons/lado-do-caminhao.png" alt=""><a href="#"><h3>Frete grátis para SC</h3></a></li>
+    <li class="prioridade"><img src="../Images/icons/estrela.png" alt=""><a href="#"><h3>Livros recomendados</h3></a></li>
+    <li class="prioridade"><img src="../Images/icons/livro-aberto-capa.png" alt=""><a href="#"><h3>Mais vendidos</h3></a></li>
    </ul>
   </div>
-  <button @click="redirecionarParaOutraPagina">carrinho</button>
   <h1>Lançamentos</h1>
   <div class="wrapper">
     <div class="grid-container">
@@ -145,6 +144,30 @@ function adicionarAoCarrinho(item) {
     </div>
   </div>
 
+  <footer>
+      <div class="divisao1">
+      <p class="principal">IFbooks</p>
+      <a href="#"><img src="../Images/icons/facebook.png" alt="facebook"></a>
+      <a href="#"><img src="../Images/icons/instagram.png" alt="instagram"></a>
+      <a href="#"><img src="../Images/icons/twitter.png" alt="twitter"></a>
+     </div>
+     <div class="divisao2">
+      <p class="principal">Contato</p>
+      <ul>
+        <li><img src="../Images/icons/Phone.png" alt="Telefone"><p>+55 47 40045263</p></li>
+        <li><img src="../Images/icons/Clock.png" alt="Relógio"><p>8h às 23h - Seg a Sex</p></li>
+        <li><img src="../Images/icons/Mail.png" alt="Email"><p>contato@ifbooks.com</p></li>
+      </ul>
+
+      <div class="cartoes">
+      <img src="../Images/paipalCard-Logo.png" alt="PayPal">
+      <img src="../Images/MasterCard-Logo.png" alt="MasterCard">
+      <img src="../Images/VISA-card-logo.png" alt="Visa">
+    </div>
+
+      <p class="transp">&copy; Alguns direitos reservados. IFbooks 2025.</p>
+    </div>
+    </footer>
 </template>
 
 <style scoped>
@@ -275,5 +298,36 @@ function adicionarAoCarrinho(item) {
     font-weight: 500;
     color: #382C2C;
     padding-left: 30px;
+  }
+  footer{
+    background-color: #27AE60;
+    margin-top: 100px;
+    color: #F1F1F1;
+    padding: 40px;
+    display: flex;
+  }
+  footer div.divisao1{
+    margin: 0 1100px 0 100px;
+  }
+  footer div p.principal{
+    margin: 0 0 20px 0;
+    font-weight: 450;
+  }
+  footer div.divisao1 img{
+    margin: 0 20px 0 0;
+  }
+  footer div ul li{
+    list-style: none;
+    display: flex;
+  }
+  footer div.divisao2 ul li img{
+    margin: 0 10px 20px -40px;
+  }
+  footer div.cartoes img{
+    margin: 40px 15px 70px 0;
+  }
+  p.transp{
+    border-top: #F1F1F1 1px solid;
+    color: rgba(255, 255, 255, 0.6);
   }
 </style>

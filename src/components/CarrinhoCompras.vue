@@ -22,14 +22,21 @@ onMounted(() => {
 </script>
 
 <template>
-  <h1>Carrinho</h1>
   
+  <header>
+    <h1>Carrinho</h1>
+    <div>
+    <h2>Título</h2>
+    <h2>Quantidade</h2>
+    <h2>Subtotal</h2>
+  </div>
+  </header>
   <div v-if="carrinho && carrinho.length > 0" class="compras">
    <article>
     <ul>
       <li v-for="item in carrinho" :key="item.id">
         <div>
-          <img :src="item.livro" alt="Capa do livro" width="100" />
+          <img :src="item.livro" alt="Capa do livro" width="70" />
         </div>
         <div class="text">
           <h2>{{ item.titulo }}</h2>
@@ -49,13 +56,21 @@ onMounted(() => {
 
 <style scoped>
 
+
 article li {
   display: flex;
-  padding: 0 10px 20px 20px;
+  padding: 10px 10px 5px 20px;
+  border-bottom: #dedede 2px solid;
 }
 
 .text {
-  padding-left: 30px;
+  padding-left: 25px;
 }
-
+header div{
+  display: flex;
+  border-bottom: #27AE60 2px solid;
+}
+header h1{
+  color: #27AE60;
+}
 </style>
