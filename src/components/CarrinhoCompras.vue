@@ -23,13 +23,20 @@ onMounted(() => {
 
 <template>
   
-  <header>
-    <h1>Carrinho</h1>
-    <div>
-    <h2>Título</h2>
-    <h2>Quantidade</h2>
-    <h2>Subtotal</h2>
-  </div>
+   <header>
+    <h3><a href="#">IFbooks</a></h3>
+    <p>apreço a <br> leitura</p>
+    <input type="text" id="searchInput" placeholder="Pesquisar">
+    <button onclick="pesquisar()"><img src="../Images/icons/procurar.png" alt=""></button>
+    <ul>
+      <li><a href="#">Termos</a></li>
+      <li><a href="#">Equipe</a></li>
+      <li><a href="#">Envio</a></li>
+      <span><li><a href="#">Devoluções</a></li></span>
+    </ul>
+    <span><a @click="redirecionarParaOutraPagina" href="#"><img src="../Images/icons/carrinho-de-compras.png" alt=""></a></span>
+    <span><a href="#"><img src="../Images/icons/coracao.png" alt=""></a></span>
+    <a href="#"><img src="../Images/icons/do-utilizador.png" alt=""></a>
   </header>
   <div v-if="carrinho && carrinho.length > 0" class="compras">
    <article>
@@ -52,6 +59,29 @@ onMounted(() => {
   <div v-else>
     <p>Seu carrinho está vazio.</p>
   </div>
+  <footer>
+      <div class="divisao1">
+      <p class="principal">IFbooks</p>
+      <a href="#"><img src="../Images/icons/facebook.png" alt="facebook"></a>
+      <a href="#"><img src="../Images/icons/instagram.png" alt="instagram"></a>
+      <a href="#"><img src="../Images/icons/twitter.png" alt="twitter"></a>
+     </div>
+     <div class="divisao2">
+      <p class="principal">Contato</p>
+      <ul>
+        <li><img src="../Images/icons/Phone.png" alt="Telefone"><p>+55 47 40045263</p></li>
+        <li><img src="../Images/icons/Clock.png" alt="Relógio"><p>8h às 23h - Seg a Sex</p></li>
+        <li><img src="../Images/icons/Mail.png" alt="Email"><p>contato@ifbooks.com</p></li>
+      </ul>
+
+      <div class="cartoes">
+      <img src="../Images/paipalCard-Logo.png" alt="PayPal">
+      <img src="../Images/MasterCard-Logo.png" alt="MasterCard">
+      <img src="../Images/VISA-card-logo.png" alt="Visa">
+    </div>
+      <p class="transp">&copy; Alguns direitos reservados. IFbooks 2025.</p>
+    </div>
+    </footer>
 </template>
 
 <style scoped>
@@ -66,11 +96,5 @@ article li {
 .text {
   padding-left: 25px;
 }
-header div{
-  display: flex;
-  border-bottom: #27AE60 2px solid;
-}
-header h1{
-  color: #27AE60;
-}
+
 </style>

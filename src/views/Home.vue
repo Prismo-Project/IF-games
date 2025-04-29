@@ -127,7 +127,7 @@ function adicionarAoCarrinho(item) {
     <li class="prioridade"><img src="../Images/icons/livro-aberto-capa.png" alt=""><a href="#"><h3>Mais vendidos</h3></a></li>
    </ul>
   </div>
-  <h1>Lançamentos</h1>
+  <h1 class="lancamentos">Lançamentos</h1>
   <div class="wrapper">
     <div class="grid-container">
       <article v-for="item in items" :key="item.id" class="card">
@@ -164,7 +164,6 @@ function adicionarAoCarrinho(item) {
       <img src="../Images/MasterCard-Logo.png" alt="MasterCard">
       <img src="../Images/VISA-card-logo.png" alt="Visa">
     </div>
-
       <p class="transp">&copy; Alguns direitos reservados. IFbooks 2025.</p>
     </div>
     </footer>
@@ -173,72 +172,6 @@ function adicionarAoCarrinho(item) {
 <style scoped>
   template{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  }
-  a{
-    text-decoration: none;
-    color: #7B7881;
-  }
-  header h3 a{
-    color: #231F2D;
-  }
-  header{
-    display: flex;
-    border-bottom: #27AE60 2px solid;
-  }
-
-  header h3{
-    padding: 5px 0 5px 250px;
-    margin: 20px 10px 0 15px; 
-  }
-  header p{
-    color: #27AE60;
-    margin: 20px 75px 23px 0;
-    padding-left: 10px;
-    font-weight: 300;
-    line-height: 20px;
-    border-left: #27AE60 2px solid;  
-  }
-  header ul{
-    display: flex;
-  }
-  header input{
-    background-color: #F1F1F1;
-    border: none;
-    outline: none;
-    margin-top: 23px;
-    padding: 3px 3px 3px 18px;
-    height: 2vw;
-    width: 20vw;
-    font-size: 1rem;
-    
-  }
-  header button{
-    border: none;
-    background-color: #F1F1F1;  
-    height: 2vw;
-    margin-top: 23px;
-    padding: 0 15px 0 15px
-  }
-  header button img{
-    width: 20px;
-    opacity: 50%;
-  }
-  header ul li{
-    padding: 30px;
-    list-style: none;
-    color: #7B7881;
-  }
-  header ul span li {
-    padding-right: 60px;
-  }
-  header a img{
-    width: 63px;
-    margin-top: 30px;
-    padding-right: 20px;
-    padding-left: 20px;
-  }
-  header span img{
-    border-right: #27AE60 1px solid;
   }
   div#banner {
     display: flex;
@@ -277,6 +210,7 @@ function adicionarAoCarrinho(item) {
   div#banner div#image img{
     margin: 20px 0 0 350px;
   }
+
   div#faixinha ul{
     display: flex;
     border-bottom: #27AE60 2px solid;
@@ -298,36 +232,5 @@ function adicionarAoCarrinho(item) {
     font-weight: 500;
     color: #382C2C;
     padding-left: 30px;
-  }
-  footer{
-    background-color: #27AE60;
-    margin-top: 100px;
-    color: #F1F1F1;
-    padding: 40px;
-    display: flex;
-  }
-  footer div.divisao1{
-    margin: 0 1100px 0 100px;
-  }
-  footer div p.principal{
-    margin: 0 0 20px 0;
-    font-weight: 450;
-  }
-  footer div.divisao1 img{
-    margin: 0 20px 0 0;
-  }
-  footer div ul li{
-    list-style: none;
-    display: flex;
-  }
-  footer div.divisao2 ul li img{
-    margin: 0 10px 20px -40px;
-  }
-  footer div.cartoes img{
-    margin: 40px 15px 70px 0;
-  }
-  p.transp{
-    border-top: #F1F1F1 1px solid;
-    color: rgba(255, 255, 255, 0.6);
   }
 </style>
