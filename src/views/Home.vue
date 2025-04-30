@@ -1,7 +1,6 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter } from 'vue-router';
-import carrinhoCompras from '@/components/CarrinhoCompras.vue';
 
 /* Containers */
 
@@ -67,7 +66,9 @@ const items = ref([
   }
 ])
 
-/* FIM DOS CONTAINERS */  
+/* FIM DOS CONTAINERS */
+
+// router
 const router = useRouter();
 
 const redirecionarParaOutraPagina = () => {
@@ -76,6 +77,12 @@ const redirecionarParaOutraPagina = () => {
     query: { carrinho: JSON.stringify(carrinho.value) }
   });
 };
+
+const irParaHome = () => {
+  router.push('/');
+};
+
+//fim do router
 
 const carrinho = ref([]);
 
@@ -86,14 +93,28 @@ function adicionarAoCarrinho(item) {
     valor: valor 
   };
   carrinho.value.push(itemComValor);
-  console.log('Item adicionado ao carrinho (main):', carrinho.value);
+  mostrarAlerta(item.titulo);
 }
 
+// aviso de compra no carrinho
+
+const mensagemCarrinho = ref('');
+const mostrarMensagem = ref(false);
+
+function mostrarAlerta(tituloLivro) {
+  mensagemCarrinho.value = `📚 "${tituloLivro}" adicionado ao carrinho!`;
+  mostrarMensagem.value = true;
+  setTimeout(() => {
+    mostrarMensagem.value = false;
+  }, 2500);
+}
+
+// aviso de compra no carrinho acima
 </script>
 
 <template>
-    <header>
-    <h3><a href="#">IFbooks</a></h3>
+  <header>
+    <h3><a href="#" @click.prevent="irParaHome">IFbooks</a></h3>
     <p>apreço a <br> leitura</p>
     <input type="text" id="searchInput" placeholder="Pesquisar">
     <button onclick="pesquisar()"><img src="../Images/icons/procurar.png" alt=""></button>
@@ -101,33 +122,52 @@ function adicionarAoCarrinho(item) {
       <li><a href="#">Termos</a></li>
       <li><a href="#">Equipe</a></li>
       <li><a href="#">Envio</a></li>
-      <span><li><a href="#">Devoluções</a></li></span>
+      <span>
+        <li><a href="#">Devoluções</a></li>
+      </span>
     </ul>
-    <span><a @click="redirecionarParaOutraPagina" href="#"><img src="../Images/icons/carrinho-de-compras.png" alt=""></a></span>
+    <span class="carrinho-icon">
+      <a @click="redirecionarParaOutraPagina" href="#">
+        <img src="../Images/icons/carrinho-de-compras.png" alt="">
+        <span v-if="carrinho.length > 0" class="contador">{{ carrinho.length }}</span>
+      </a>
+    </span>
     <span><a href="#"><img src="../Images/icons/coracao.png" alt=""></a></span>
     <a href="#"><img src="../Images/icons/do-utilizador.png" alt=""></a>
   </header>
 
-
   <div id="banner">
     <div id="text">
-    <span><p>Autor de Abril</p></span>
-    <h1>Eric-Emanuel Schmitt</h1>
-    <p>Eric-Emmanuel Schmitt has been awarded more than 20<br>literary prizes and distinctions, and in 2001 he received the<br>title of Chevalier des Arts et des Lettres. His books have been<br>translated into over 40 languages.</p>
-    <button>Acessar página do livro</button>
+      <span>
+        <p>Autor de Abril</p>
+      </span>
+      <h1>Eric-Emanuel Schmitt</h1>
+      <p>Eric-Emmanuel Schmitt has been awarded more than 20<br>literary prizes and distinctions, and in 2001 he
+        received the<br>title of Chevalier des Arts et des Lettres. His books have been<br>translated into over 40
+        languages.</p>
+      <button>Acessar página do livro</button>
+    </div>
+    <div id="image">
+      <img src="../Images/book.png" alt="">
+    </div>
   </div>
-  <div id="image">
-    <img src="../Images/book.png" alt="">
-  </div>
-   </div>
-   <div id="faixinha">
-   <ul>
-    <li><img src="../Images/icons/lado-do-caminhao.png" alt=""><a href="#"><h3>Frete grátis para SC</h3></a></li>
-    <li class="prioridade"><img src="../Images/icons/estrela.png" alt=""><a href="#"><h3>Livros recomendados</h3></a></li>
-    <li class="prioridade"><img src="../Images/icons/livro-aberto-capa.png" alt=""><a href="#"><h3>Mais vendidos</h3></a></li>
-   </ul>
+  <div id="faixinha">
+    <ul>
+      <li><img src="../Images/icons/lado-do-caminhao.png" alt=""><a href="#">
+          <h3>Frete grátis para SC</h3>
+        </a></li>
+      <li class="prioridade"><img src="../Images/icons/estrela.png" alt=""><a href="#">
+          <h3>Livros recomendados</h3>
+        </a></li>
+      <li class="prioridade"><img src="../Images/icons/livro-aberto-capa.png" alt=""><a href="#">
+          <h3>Mais vendidos</h3>
+        </a></li>
+    </ul>
   </div>
   <h1 class="lancamentos">Lançamentos</h1>
+  <div v-if="mostrarMensagem" class="mensagem-carrinho">
+    {{ mensagemCarrinho }}
+  </div>
   <div class="wrapper">
     <div class="grid-container">
       <article v-for="item in items" :key="item.id" class="card">
@@ -145,92 +185,152 @@ function adicionarAoCarrinho(item) {
   </div>
 
   <footer>
-      <div class="divisao1">
+    <div class="divisao1">
       <p class="principal">IFbooks</p>
       <a href="#"><img src="../Images/icons/facebook.png" alt="facebook"></a>
       <a href="#"><img src="../Images/icons/instagram.png" alt="instagram"></a>
       <a href="#"><img src="../Images/icons/twitter.png" alt="twitter"></a>
-     </div>
-     <div class="divisao2">
+    </div>
+    <div class="divisao2">
       <p class="principal">Contato</p>
       <ul>
-        <li><img src="../Images/icons/Phone.png" alt="Telefone"><p>+55 47 40045263</p></li>
-        <li><img src="../Images/icons/Clock.png" alt="Relógio"><p>8h às 23h - Seg a Sex</p></li>
-        <li><img src="../Images/icons/Mail.png" alt="Email"><p>contato@ifbooks.com</p></li>
+        <li><img src="../Images/icons/Phone.png" alt="Telefone">
+          <p>+55 47 40045263</p>
+        </li>
+        <li><img src="../Images/icons/Clock.png" alt="Relógio">
+          <p>8h às 23h - Seg a Sex</p>
+        </li>
+        <li><img src="../Images/icons/Mail.png" alt="Email">
+          <p>contato@ifbooks.com</p>
+        </li>
       </ul>
 
       <div class="cartoes">
-      <img src="../Images/paipalCard-Logo.png" alt="PayPal">
-      <img src="../Images/MasterCard-Logo.png" alt="MasterCard">
-      <img src="../Images/VISA-card-logo.png" alt="Visa">
-    </div>
+        <img src="../Images/paipalCard-Logo.png" alt="PayPal">
+        <img src="../Images/MasterCard-Logo.png" alt="MasterCard">
+        <img src="../Images/VISA-card-logo.png" alt="Visa">
+      </div>
       <p class="transp">&copy; Alguns direitos reservados. IFbooks 2025.</p>
     </div>
-    </footer>
+  </footer>
 </template>
 
 <style scoped>
-  template{
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  }
-  div#banner {
-    display: flex;
-    padding: 0 200px 10px 300px;
-    border-bottom: #27AE60 2px solid;
-  }
-  div#banner div#text {
-    padding-top: 150px;
-  }
-  div#banner div#text span p{
-    color: #27AE60;
-    border: #27AE60 1px solid;
-    border-radius: 5%;
-    padding: 10px;
-    margin: 0 350px 0 0;
-  }
-  div#banner div#text p{
-    color:#4D4C4C ;
-    padding-bottom: 40px;
-  }
-  div#banner div#text h1{
-    padding: 15px 0 20px 0;
-    font-size: 3rem;
-    font-weight: 500;
-    color: #382C2C;
-  }
-  
-  div#banner div#text button{
-    color: white;
-    font-size: 20px;
-    padding: 20px;
-    background-color: #27AE60;
-    border: none;
-    border-radius: 3%;
-  }
-  div#banner div#image img{
-    margin: 20px 0 0 350px;
-  }
+template {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
 
-  div#faixinha ul{
-    display: flex;
-    border-bottom: #27AE60 2px solid;
-    padding: 75px 0 75px 250px;
-  }
-  div#faixinha ul li{
-    display: flex;
-  }
-  div#faixinha ul li img{
-    width: 40px;
-  }
-  div#faixinha ul li.prioridade{
-    border-left: #7B7881 2px solid; 
-    margin-left: 100px;
-    padding-left: 100px;
-  }
-  div#faixinha h3{
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: #382C2C;
-    padding-left: 30px;
-  }
+div#banner {
+  display: flex;
+  padding: 0 200px 10px 300px;
+  border-bottom: #27AE60 2px solid;
+}
+
+div#banner div#text {
+  padding-top: 150px;
+}
+
+div#banner div#text span p {
+  color: #27AE60;
+  border: #27AE60 1px solid;
+  border-radius: 5%;
+  padding: 10px;
+  margin: 0 350px 0 0;
+}
+
+div#banner div#text p {
+  color: #4D4C4C;
+  padding-bottom: 40px;
+}
+
+div#banner div#text h1 {
+  padding: 15px 0 20px 0;
+  font-size: 3rem;
+  font-weight: 500;
+  color: #382C2C;
+}
+
+div#banner div#text button {
+  color: white;
+  font-size: 20px;
+  padding: 20px;
+  background-color: #27AE60;
+  border: none;
+  border-radius: 3%;
+}
+
+div#banner div#image img {
+  margin: 20px 0 0 350px;
+}
+
+div#faixinha ul {
+  display: flex;
+  border-bottom: #27AE60 2px solid;
+  padding: 75px 0 75px 250px;
+}
+
+div#faixinha ul li {
+  display: flex;
+}
+
+div#faixinha ul li img {
+  width: 40px;
+}
+
+div#faixinha ul li.prioridade {
+  border-left: #7B7881 2px solid;
+  margin-left: 100px;
+  padding-left: 100px;
+}
+
+div#faixinha h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #382C2C;
+  padding-left: 30px;
+}
+
+/* contador carrinho */
+.carrinho-icon {
+  position: relative;
+}
+
+.contador {
+  position: absolute;
+  top: 10px;
+  right: 4px;
+  background: #1d8548;
+  color: white;
+  border-radius: 100%;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: bold;
+}
+/* contador carrinho */
+
+/* aviso de compra carrinho */
+.mensagem-carrinho {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #27AE60;
+  color: white;
+  padding: 16px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  font-size: 16px;
+  font-weight: bold;
+  z-index: 1000;
+  transition: all 0.3s ease-in-out;
+}
+/* aviso de compra carrinho */
+
+/* efeito comprar */
+
+
+button.comprar:active {
+  transform: scale(0.95) translateY(2px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+/* efeito comprar */
 </style>
