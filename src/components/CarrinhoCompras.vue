@@ -104,28 +104,30 @@ onMounted(() => {
       <h2>Subtotal</h2>
     </div>
 
-    <article v-for="item in carrinho" :key="item.id" class="item-carrinho">
-      <img :src="item.livro" alt="Capa do livro" width="70" />
-      <div class="info">
-        <div class="emparelhado">
-          <div class="titulo">
-            <h3>{{ item.titulo }}</h3>
-            <p>{{ item.autor }}</p>
-            <p>Preço: R${{ item.valor.toFixed(2) }}</p>
-          </div>
+    <transition-group name="fade" tag="div">
+      <article v-for="item in carrinho" :key="item.id" class="item-carrinho">
+        <img :src="item.livro" alt="Capa do livro" width="70" />
+        <div class="info">
+          <div class="emparelhado">
+            <div class="titulo">
+              <h3>{{ item.titulo }}</h3>
+              <p>{{ item.autor }}</p>
+              <p>Preço: R${{ item.valor.toFixed(2) }}</p>
+            </div>
 
-          <div class="controles-quantidade">
-            <button @click="diminuirQuantidade(item)">-</button>
-            <span>{{ item.quantidade }}</span>
-            <button @click="aumentarQuantidade(item)">+</button>
-          </div>
-          
-          <div class="info-subtotal">
-            <p>R${{ (item.valor * item.quantidade).toFixed(2) }}</p>
+            <div class="controles-quantidade">
+              <button @click="diminuirQuantidade(item)">-</button>
+              <span>{{ item.quantidade }}</span>
+              <button @click="aumentarQuantidade(item)">+</button>
+            </div>
+            <div class="info-subtotal">
+              <p>R${{ (item.valor * item.quantidade).toFixed(2) }}</p>
+            </div>
           </div>
         </div>
-      </div>
-    </article>
+      </article>
+    </transition-group>
+    
     <div class="resumo-compra">
       <p>Total de itens: {{ totalItens }}</p>
       <p class="total-compra">Total da compra: R${{ totalCompra.toFixed(2) }}</p>
@@ -163,18 +165,13 @@ onMounted(() => {
 </template>
 
 <style scoped>
-article li {
-  display: flex;
-  padding: 10px 10px 5px 20px;
-  border-bottom: #dedede 2px solid;
-}
-
-/** inicio carrinho */
+/** Inicio Carrinho */
 
 div.nada {
   text-align: center;
   padding-top: 100px;
-  font-size: 3rem;
+  font-size: 5rem;
+  padding: 20vw;
 }
 
 .carrinho-cabecalho {
@@ -208,17 +205,31 @@ div.titulo {
   white-space: nowrap;
 }
 
-.item-carrinho {
+.controles-quantidade button {
+  width: 30px;
+  height: 30px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+  border-radius: 4px;
   display: flex;
   align-items: center;
+  justify-content: center;
+}
+
+.item-carrinho {
+  display: grid;
+  grid-template-columns: 115px 2fr 1fr 1fr;
+  align-items: start; 
   padding: 20px 0;
   border-bottom: 1px solid #ccc;
+  gap: 20px;
 }
 
 .item-carrinho img {
   width: 115px;
   height: auto;
-  margin-right: 20px;
   border-radius: 4px;
 }
 
@@ -243,30 +254,11 @@ div.titulo {
   font-size: 1.5rem;
 }
 
-/**
-.item-carrinho {
-  display: flex;
-  padding: 15px;
-  border-bottom: 2px solid #dedede;
-  align-items: flex-start;
-}
-
-.item-carrinho img {
-  margin-right: 20px;
-}
-
-.total {
-  font-weight: bold;
-  margin-top: 20px;
-}
-*/
-
 .quantidade {
   display: flex;
   align-items: center;
   margin-top: 10px;
 }
-
 
 .compras {
   max-width: 1600px;
@@ -278,60 +270,6 @@ h2#carrinho {
   color: #28a745;
   font-weight: 600;
   font-size: 1.8rem;
-}
-
-.item-carrinho {
-  display: grid;
-  grid-template-columns: 115px 2fr 1fr 1fr;
-  align-items: start; 
-  padding: 20px 0;
-  border-bottom: 1px solid #ccc;
-  gap: 20px;
-}
-
-.item-carrinho img {
-  width: 115px;
-  height: auto;
-  border-radius: 4px;
-}
-
-.info-livro {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
-  padding: 10px 0;
-}
-
-.info-livro h3 {
-  font-size: 18px;
-  margin-bottom: 5px;
-  color: #333;
-}
-
-.info-livro p {
-  color: #555;
-  margin: 4px 0;
-  line-height: 1.4;
-}
-
-.controles-quantidade button {
-  width: 30px;
-  height: 30px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  background: white;
-  cursor: pointer;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.preco-unitario {
-  font-size: 0.9rem;
-  color: #666;
-  margin-top: 8px;
 }
 
 .resumo-compra {
@@ -366,4 +304,13 @@ div.emparelhado {
   display: flex;
 }
 
+/** Transitions */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.4s, transform 0.4s;
+}
+
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+  transform: translateY(10px);
+}
 </style>
