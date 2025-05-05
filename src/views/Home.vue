@@ -114,8 +114,8 @@ function mostrarAlerta(tituloLivro) {
 
 <template>
   <header>
-    <h3><a href="#" @click.prevent="irParaHome">IFbooks</a></h3>
-    <p>apreço a <br> leitura</p>
+    <h3><a href="#" @click.prevent="irParaHome">IFgames</a></h3>
+    <p>apreço a <br> cultura</p>
     <input type="text" id="searchInput" placeholder="Pesquisar">
     <button onclick="pesquisar()"><img src="../Images/icons/procurar.png" alt=""></button>
     <ul>
@@ -139,16 +139,15 @@ function mostrarAlerta(tituloLivro) {
   <div id="banner">
     <div id="text">
       <span>
-        <p>Autor de Abril</p>
+        <p>Jogo de Maio</p>
       </span>
-      <h1>Eric-Emanuel Schmitt</h1>
-      <p>Eric-Emmanuel Schmitt has been awarded more than 20<br>literary prizes and distinctions, and in 2001 he
-        received the<br>title of Chevalier des Arts et des Lettres. His books have been<br>translated into over 40
-        languages.</p>
-      <button>Acessar página do livro</button>
+      <h1>Elden Ring</h1>
+      <p>the latest fantasy action-RPG <br>from Hidetaka Miyazaki(Bloodborne, Dark Souls) <br>& George R. R. Martin (Game of Thrones).
+</p>
+      <button>Acessar página do jogo</button>
     </div>
     <div id="image">
-      <img src="../Images/book.png" alt="">
+      <img src="/home/arthur.benk/Documentos/amostradoif/IFbooks/src/Images/elden-ring-capa.png" alt="">
     </div>
   </div>
   <div id="faixinha">
@@ -157,9 +156,9 @@ function mostrarAlerta(tituloLivro) {
           <h3>Frete grátis para SC</h3>
         </a></li>
       <li class="prioridade"><img src="../Images/icons/estrela.png" alt=""><a href="#">
-          <h3>Livros recomendados</h3>
+          <h3>Jogos recomendados</h3>
         </a></li>
-      <li class="prioridade"><img src="../Images/icons/livro-aberto-capa.png" alt=""><a href="#">
+      <li class="prioridade"><img src="../Images/icons/controle-de-video-game.png" alt=""><a href="#">
           <h3>Mais vendidos</h3>
         </a></li>
     </ul>
@@ -186,7 +185,7 @@ function mostrarAlerta(tituloLivro) {
 
   <footer>
     <div class="divisao1">
-      <p class="principal">IFbooks</p>
+      <p class="principal">IFgames</p>
       <a href="#"><img src="../Images/icons/facebook.png" alt="facebook"></a>
       <a href="#"><img src="../Images/icons/instagram.png" alt="instagram"></a>
       <a href="#"><img src="../Images/icons/twitter.png" alt="twitter"></a>
@@ -201,7 +200,7 @@ function mostrarAlerta(tituloLivro) {
           <p>8h às 23h - Seg a Sex</p>
         </li>
         <li><img src="../Images/icons/Mail.png" alt="Email">
-          <p>contato@ifbooks.com</p>
+          <p>contato@ifgames.com</p>
         </li>
       </ul>
 
@@ -224,6 +223,9 @@ div#banner {
   display: flex;
   padding: 0 200px 10px 300px;
   border-bottom: #27AE60 2px solid;
+}
+div#banner h1{
+  margin: 0 0 0 -225px;
 }
 
 div#banner div#text {
@@ -260,7 +262,8 @@ div#banner div#text button {
 }
 
 div#banner div#image img {
-  margin: 20px 0 0 350px;
+  width: 500px;
+  margin: 40px 0 20px 350px;
 }
 
 div#faixinha ul {

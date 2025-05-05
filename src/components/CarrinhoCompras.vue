@@ -82,8 +82,8 @@ onMounted(() => {
 
 <template>
   <header>
-    <h3><a href="#" @click.prevent="irParaHome">IFbooks</a></h3>
-    <p>apreço a <br> leitura</p>
+    <h3><a href="#" @click.prevent="irParaHome">IFgames</a></h3>
+    <p>apreço a <br> cultura</p>
     <input type="text" id="searchInput" placeholder="Pesquisar">
     <button onclick="pesquisar()"><img src="../Images/icons/procurar.png" alt=""></button>
     <ul>
@@ -141,7 +141,7 @@ onMounted(() => {
 
   <footer>
     <div class="divisao1">
-      <p class="principal">IFbooks</p>
+      <p class="principal">IFgames</p>
       <a href="#"><img src="../Images/icons/facebook.png" alt="facebook"></a>
       <a href="#"><img src="../Images/icons/instagram.png" alt="instagram"></a>
       <a href="#"><img src="../Images/icons/twitter.png" alt="twitter"></a>
@@ -151,7 +151,7 @@ onMounted(() => {
       <ul>
         <li><img src="../Images/icons/Phone.png" alt="Telefone"><p>+55 47 40045263</p></li>
         <li><img src="../Images/icons/Clock.png" alt="Relógio"><p>8h às 23h - Seg a Sex</p></li>
-        <li><img src="../Images/icons/Mail.png" alt="Email"><p>contato@ifbooks.com</p></li>
+        <li><img src="../Images/icons/Mail.png" alt="Email"><p>contato@ifgames.com</p></li>
       </ul>
 
       <div class="cartoes">
