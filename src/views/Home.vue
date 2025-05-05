@@ -1,115 +1,136 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted, watch } from "vue";
 import { useRouter } from 'vue-router';
 
-/* Containers */
-
-const autor1 = "Cassandra Clare"
-const valorPadrao = "23.42"
-
-const items = ref([
+const jogos = ref([
   {
     id: 1,
-    livro: 'src/Images/ChainOfIron.png',
-    titulo: "Chain Of Iron",
-    autor: autor1,
-    valor: valorPadrao
+    imagem: 'https://store-images.s-microsoft.com/image/apps.25322.13715792864578983.571a71b5-a2e5-4970-8492-94d49bf62526.3472539d-960d-4b45-b15a-f8c1ea9fb9dc',
+    titulo: "Elden Ring",
+    desenvolvedor: "FromSoftware",
+    valor: 199.90,
+    plataformas: ["PS5", "Xbox Series X", "PC"],
+    lancamento: "2022"
   },
   {
     id: 2,
-    livro: 'src/Images/ChainOfThorns.png',
-    titulo: "Chain Of Thorns",
-    autor: autor1,
-    valor: valorPadrao
+    imagem: 'https://store-images.s-microsoft.com/image/apps.34695.13942869738016799.078aba97-2f28-440f-97b6-b852e1af307a.b278e12f-c22c-4a2a-bb18-dfd26ca6cafc',
+    titulo: "RedDead 2",
+    desenvolvedor: "Rockstar Games",
+    valor: 79.90,
+    plataformas: ["PS4", "Xbox One", "PC", "Switch"],
+    lancamento: "2015"
   },
   {
     id: 3,
-    livro: 'src/Images/CityOfFallenAngels.png',
-    titulo: "City Of Fallen Angels",
-    autor: autor1,
-    valor: "13.94"
+    imagem: 'https://store-images.s-microsoft.com/image/apps.62801.66515090704019777.7fa547c1-c211-4229-a4d3-3ceef762e0a4.c9aa48d1-63ab-4eb6-8839-eb6e41935837',
+    titulo: "GTA V",
+    desenvolvedor: "Rockstar Games",
+    valor: 249.90,
+    plataformas: ["PS5", "PS4"],
+    lancamento: "2022"
   },
   {
     id: 4,
-    livro: 'src/Images/NonaTheNinth.png',
-    titulo: "Nona the Ninth",
-    autor: autor1,
-    valor: "16.84"
+    imagem: 'https://store-images.s-microsoft.com/image/apps.53095.13850085746326678.06e2dc5c-7997-46e9-a8e6-0e48b57cb13b.419e3c9d-9dd3-4a28-a9f3-a12350215871',
+    titulo: "Minecraft",
+    desenvolvedor: "Mojang",
+    valor: 229.90,
+    plataformas: ["PS5", "PS4"],
+    lancamento: "2022"
   },
   {
     id: 5,
-    livro: 'src/Images/HarlemShuffle.png',
-    titulo: "Harlem Shuffle  ",
-    autor: "Colson Whitehead",
-    valor: "26.92"
+    imagem: 'https://store-images.s-microsoft.com/image/apps.54508.13768907753672648.dcd706bb-ce91-4b3f-9525-10b1d4af8423.ad8946cd-a4cb-4ea2-bbf7-a05b1a4f4126',
+    titulo: "Oblivion",
+    desenvolvedor: "Bethesda",
+    valor: 299.90,
+    plataformas: ["Xbox Series X", "PC"],
+    lancamento: "2023"
   },
   {
     id: 6,
-    livro: 'src/Images/TwoOldWomem.png',
-    titulo: "Two Old Women",
-    autor: "Velma Walls",
-    valor: "13.95"
+    imagem: 'https://store-images.s-microsoft.com/image/apps.29867.14020606539089642.f080e5a8-2e29-4355-a9e1-8aad7f690719.9f82ea01-f518-478d-86fc-817053e27d86',
+    titulo: "Phasmofobia",
+    desenvolvedor: "Nao sei",
+    valor: 349.90,
+    plataformas: ["Switch"],
+    lancamento: "2023"
   },
   {
     id: 7,
-    livro: 'src/Images/CarrieSotoIsBack.png',
-    titulo: "Carrie Soto Is Back",
-    autor: "Taylor Jenkirs Reid",
-    valor: "26.04"
+    imagem: 'https://store-images.s-microsoft.com/image/apps.39617.13862251612333050.ec09080a-b13c-432f-96c1-4c1d38bfef9c.b0deca43-6ba3-4ec9-9013-4b1b0763011d',
+    titulo: "Fifa",
+    desenvolvedor: "Nao sei",
+    valor: 349.90,
+    plataformas: ["Switch"],
+    lancamento: "2023"
   },
   {
     id: 8,
-    livro: 'src/Images/BookLovers.png',
-    titulo: "Book Lovers",
-    autor: "Emily Henry",
-    valor: "15.81"
+    imagem: 'https://store-images.s-microsoft.com/image/apps.39617.13862251612333050.ec09080a-b13c-432f-96c1-4c1d38bfef9c.b0deca43-6ba3-4ec9-9013-4b1b0763011d',
+    titulo: "Fifa",
+    desenvolvedor: "Nao sei",
+    valor: 349.90,
+    plataformas: ["Switch"],
+    lancamento: "2023"
   }
-])
-
-/* FIM DOS CONTAINERS */
+ 
+]);
 
 // router
 const router = useRouter();
 
-const redirecionarParaOutraPagina = () => {
-  router.push({
-    path: '/carrinho',
-    query: { carrinho: JSON.stringify(carrinho.value) }
-  });
+const redirecionarParaCarrinho = () => {
+  router.push('/carrinho');
 };
 
 const irParaHome = () => {
   router.push('/');
 };
 
-//fim do router
-
 const carrinho = ref([]);
 
-function adicionarAoCarrinho(item) {
-  const valor = item.valor ? parseFloat(item.valor.replace(',', '.')) : 0; 
-  const itemComValor = {
-    ...item,
-    valor: valor 
-  };
-  carrinho.value.push(itemComValor);
-  mostrarAlerta(item.titulo);
-}
+onMounted(() => {
+  const carrinhoSalvo = sessionStorage.getItem('carrinho');
+  if (carrinhoSalvo) {
+    carrinho.value = JSON.parse(carrinhoSalvo);
+  }
+});
 
-// aviso de compra no carrinho
+watch(carrinho, (novoCarrinho) => {
+  sessionStorage.setItem('carrinho', JSON.stringify(novoCarrinho));
+}, { deep: true });
+
+function adicionarAoCarrinho(jogo) {
+  const valor = typeof jogo.valor === 'string' ? parseFloat(jogo.valor.replace(',', '.')) : jogo.valor;
+  
+  const itemExistente = carrinho.value.find(i => i.id === jogo.id);
+  
+  if (itemExistente) {
+    itemExistente.quantidade = (itemExistente.quantidade || 1) + 1;
+  } else {
+    const itemComValor = {
+      ...jogo,
+      valor: valor,
+      quantidade: 1
+    };
+    carrinho.value.push(itemComValor);
+  }
+  
+  mostrarAlerta(jogo.titulo);
+}
 
 const mensagemCarrinho = ref('');
 const mostrarMensagem = ref(false);
 
-function mostrarAlerta(tituloLivro) {
-  mensagemCarrinho.value = `📚 "${tituloLivro}" adicionado ao carrinho!`;
+function mostrarAlerta(tituloJogo) {
+  mensagemCarrinho.value = `🎮 "${tituloJogo}" adicionado ao carrinho!`;
   mostrarMensagem.value = true;
   setTimeout(() => {
     mostrarMensagem.value = false;
   }, 2500);
 }
-
-// aviso de compra no carrinho acima
 </script>
 
 <template>
@@ -127,9 +148,11 @@ function mostrarAlerta(tituloLivro) {
       </span>
     </ul>
     <span class="carrinho-icon">
-      <a @click="redirecionarParaOutraPagina" href="#">
+      <a @click="redirecionarParaCarrinho" href="#">
         <img src="../Images/icons/carrinho-de-compras.png" alt="">
-        <span v-if="carrinho.length > 0" class="contador">{{ carrinho.length }}</span>
+        <span v-if="carrinho.length > 0" class="contador">
+          {{ carrinho.reduce((total, item) => total + (item.quantidade || 1), 0) }}
+        </span>
       </a>
     </span>
     <span><a href="#"><img src="../Images/icons/coracao.png" alt=""></a></span>
@@ -142,14 +165,16 @@ function mostrarAlerta(tituloLivro) {
         <p>Jogo de Maio</p>
       </span>
       <h1>Elden Ring</h1>
-      <p>the latest fantasy action-RPG <br>from Hidetaka Miyazaki(Bloodborne, Dark Souls) <br>& George R. R. Martin (Game of Thrones).
-</p>
-      <button>Acessar página do jogo</button>
+      <p>the latest fantasy action-RPG <br>from Hidetaka Miyazaki(Bloodborne, Dark Souls) <br>& George R. R. Martin (Game of Thrones).</p>
+      <router-link to="/game/1">
+        <button>Acessar página do jogo</button>
+      </router-link>
     </div>
     <div id="image">
-      <img src="/home/arthur.benk/Documentos/amostradoif/IFbooks/src/Images/elden-ring-capa.png" alt="">
+      <img src="/src/Images/elden-ring-capa.png" alt="Elden Ring">
     </div>
   </div>
+  
   <div id="faixinha">
     <ul>
       <li><img src="../Images/icons/lado-do-caminhao.png" alt=""><a href="#">
@@ -163,21 +188,28 @@ function mostrarAlerta(tituloLivro) {
         </a></li>
     </ul>
   </div>
+  
   <h1 class="lancamentos">Lançamentos</h1>
+  
   <div v-if="mostrarMensagem" class="mensagem-carrinho">
     {{ mensagemCarrinho }}
   </div>
+  
   <div class="wrapper">
     <div class="grid-container">
-      <article v-for="item in items" :key="item.id" class="card">
+      <article v-for="jogo in jogos" :key="jogo.id" class="card">
         <div class="img">
-          <img :src="item.livro" alt="Livro" class="livros" width="150">
+          <router-link :to="'/game/' + jogo.id">
+            <img :src="jogo.imagem" :alt="jogo.titulo" class="game-image" width="150">
+          </router-link>
         </div>
-        <h2>{{ item.titulo }}</h2>
+        <h2>
+          <router-link :to="'/game/' + jogo.id">{{ jogo.titulo }}</router-link>
+        </h2>
         <div class="text">
-          <p class="autor">{{ item.autor }}</p>
-          <h3>R${{ item.valor }}</h3>
-          <button class="comprar" @click="adicionarAoCarrinho(item)">Comprar</button>
+          <p class="desenvolvedor">{{ jogo.desenvolvedor }}</p>
+          <h3>R$ {{ jogo.valor.toFixed(2) }}</h3>
+          <button class="comprar" @click="adicionarAoCarrinho(jogo)">Comprar</button>
         </div>
       </article>
     </div>
@@ -209,131 +241,327 @@ function mostrarAlerta(tituloLivro) {
         <img src="../Images/MasterCard-Logo.png" alt="MasterCard">
         <img src="../Images/VISA-card-logo.png" alt="Visa">
       </div>
-      <p class="transp">&copy; Alguns direitos reservados. IFbooks 2025.</p>
+      <p class="transp">&copy; Alguns direitos reservados. IFgames 2025.</p>
     </div>
   </footer>
 </template>
 
 <style scoped>
 template {
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-div#banner {
+/* Banner principal */
+#banner {
   display: flex;
   padding: 0 200px 10px 300px;
   border-bottom: #27AE60 2px solid;
-}
-div#banner h1{
-  margin: 0 0 0 -225px;
+  align-items: center;
 }
 
-div#banner div#text {
-  padding-top: 150px;
+#banner #text {
+  flex: 1;
+  justify-items: left;
 }
 
-div#banner div#text span p {
+#banner #text span p {
   color: #27AE60;
   border: #27AE60 1px solid;
-  border-radius: 5%;
+  border-radius: 5px;
   padding: 10px;
-  margin: 0 350px 0 0;
+  display: inline-block;
+  margin-bottom: 20px;
 }
 
-div#banner div#text p {
+#banner #text p {
   color: #4D4C4C;
   padding-bottom: 40px;
+  line-height: 1.6;
 }
 
-div#banner div#text h1 {
-  padding: 15px 0 20px 0;
+#banner #text h1 {
   font-size: 3rem;
   font-weight: 500;
   color: #382C2C;
 }
 
-div#banner div#text button {
+#banner #text button {
   color: white;
   font-size: 20px;
-  padding: 20px;
+  padding: 15px 30px;
   background-color: #27AE60;
   border: none;
-  border-radius: 3%;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-div#banner div#image img {
-  width: 500px;
-  margin: 40px 0 20px 350px;
+#banner #text button:hover {
+  background-color: #1e8a4a;
 }
 
-div#faixinha ul {
+#banner #image {
+  flex: 1;
+  text-align: right;
+}
+
+#banner #image img {
+  width: 80%;
+}
+
+/* Faixa de informações */
+#faixinha ul {
   display: flex;
   border-bottom: #27AE60 2px solid;
-  padding: 75px 0 75px 250px;
+  padding: 50px 0 50px 250px;
+  justify-content: center;
 }
 
-div#faixinha ul li {
+#faixinha ul li {
   display: flex;
+  align-items: center;
 }
 
-div#faixinha ul li img {
+#faixinha ul li img {
   width: 40px;
+  margin-right: 15px;
 }
 
-div#faixinha ul li.prioridade {
+#faixinha ul li.prioridade {
   border-left: #7B7881 2px solid;
   margin-left: 100px;
   padding-left: 100px;
 }
 
-div#faixinha h3 {
+#faixinha h3 {
   font-size: 1.5rem;
   font-weight: 500;
   color: #382C2C;
-  padding-left: 30px;
 }
 
-/* contador carrinho */
-.carrinho-icon {
-  position: relative;
+/* Grid de jogos */
+.lancamentos {
+  text-align: center;
+  margin: 50px 0 30px;
+  font-size: 2.5rem;
+  color: #333;
 }
 
-.contador {
-  position: absolute;
-  top: 10px;
-  right: 4px;
-  background: #1d8548;
+.wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat((4, 1fr));
+  gap: 30px;
+  padding: 20px 0;
+}
+
+.card {
+  background: white;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.card .img {
+  padding: 0px 20px 20px 20px;
+  text-align: center;
+  background: #f9f9f9;
+}
+
+.game-image {
+  object-fit: contain;
+  transition: transform 0.3s;
+}
+
+.card:hover .game-image {
+  transform: scale(1.05);
+}
+
+.card h2 {
+  padding: 0px 20px 5px;
+  font-size: 1.2rem;
+}
+
+.card h2 a {
+  color: #333;
+  text-decoration: none;
+}
+
+.card h2 a:hover {
+  color: #27AE60;
+}
+
+.card .text {
+  padding: 0 20px 20px;
+}
+
+.desenvolvedor {
+  color: #666;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+}
+
+.card h3 {
+  color: #27AE60;
+  font-size: 1.4rem;
+  margin: 10px 0;
+}
+
+.comprar {
+  width: 100%;
+  padding: 10px;
+  background-color: #27AE60;
   color: white;
-  border-radius: 100%;
-  padding: 4px 8px;
-  font-size: 12px;
-  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
 }
-/* contador carrinho */
 
-/* aviso de compra carrinho */
+.comprar:hover {
+  background-color: #1e8a4a;
+}
+
+.comprar:active {
+  transform: scale(0.98);
+}
+
+/* Mensagem do carrinho */
 .mensagem-carrinho {
   position: fixed;
   bottom: 20px;
   right: 20px;
   background-color: #27AE60;
   color: white;
-  padding: 16px 20px;
+  padding: 16px 24px;
   border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   font-size: 16px;
   font-weight: bold;
   z-index: 1000;
-  transition: all 0.3s ease-in-out;
+  animation: slideIn 0.3s ease-out;
 }
-/* aviso de compra carrinho */
 
-/* efeito comprar */
-
-
-button.comprar:active {
-  transform: scale(0.95) translateY(2px);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
-/* efeito comprar */
+
+/* Contador do carrinho */
+.carrinho-icon {
+  position: relative;
+  display: inline-block;
+}
+
+.contador {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #e74c3c;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Footer */
+footer {
+  background: #2c3e50;
+  color: white;
+  padding: 50px 0;
+  margin-top: 50px;
+}
+
+.divisao1, .divisao2 {
+  display: inline-block;
+  vertical-align: top;
+  width: 48%;
+  padding: 0 2%;
+}
+
+.principal {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #27AE60;
+}
+
+.cartoes img {
+  height: 30px;
+  margin-right: 10px;
+  margin-top: 20px;
+}
+
+.transp {
+  opacity: 0.7;
+  font-size: 0.9rem;
+  margin-top: 30px;
+}
+
+/* Responsividade */
+@media (max-width: 1200px) {
+  #banner {
+    padding: 0 100px;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  #banner #text {
+    padding-top: 50px;
+  }
+  
+  #banner h1 {
+    margin: 0;
+  }
+  
+  #banner #image {
+    margin-top: 30px;
+  }
+  
+  #faixinha ul {
+    padding-left: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  #faixinha ul {
+    flex-direction: column;
+    padding-left: 20px;
+  }
+  
+  #faixinha ul li.prioridade {
+    border-left: none;
+    border-top: 1px solid #7B7881;
+    margin-left: 0;
+    padding-left: 0;
+    margin-top: 20px;
+    padding-top: 20px;
+  }
+  
+  .divisao1, .divisao2 {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+}
 </style>

@@ -1,8 +1,7 @@
 <script setup>
-import { onMounted, ref, computed } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
+import { onMounted, ref, computed, watch } from 'vue';
+import { useRouter } from 'vue-router';
 
-const route = useRoute();
 const router = useRouter();
 
 const irParaHome = () => {
@@ -11,22 +10,18 @@ const irParaHome = () => {
 
 const carrinho = ref([]);
 
-const adicionarAoCarrinho = (novoItem) => {
-  const itemExistente = carrinho.value.find(item => 
-    item.id === novoItem.id && 
-    item.titulo === novoItem.titulo && 
-    item.autor === novoItem.autor
-  );
-  
-  if (itemExistente) {
-    itemExistente.quantidade++;
-  } else {
-    carrinho.value.push({
-      ...novoItem,
-      quantidade: 1
-    });
+// Carregar carrinho do sessionStorage ao iniciar
+onMounted(() => {
+  const carrinhoSalvo = sessionStorage.getItem('carrinho');
+  if (carrinhoSalvo) {
+    carrinho.value = JSON.parse(carrinhoSalvo);
   }
-};
+});
+
+// Salvar carrinho automaticamente quando houver mudanças
+watch(carrinho, (novoCarrinho) => {
+  sessionStorage.setItem('carrinho', JSON.stringify(novoCarrinho));
+}, { deep: true });
 
 const aumentarQuantidade = (item) => {
   item.quantidade++;
@@ -47,38 +42,7 @@ const totalItens = computed(() => {
 const totalCompra = computed(() => {
   return carrinho.value.reduce((total, item) => total + (item.valor * item.quantidade), 0);
 });
-
-onMounted(() => {
-  if (route.query.carrinho) {
-    try {
-      const dados = JSON.parse(route.query.carrinho);
-      const carrinhoAgrupado = [];
-      
-      dados.forEach(item => {
-        const itemExistente = carrinhoAgrupado.find(i => 
-          i.id === item.id && 
-          i.titulo === item.titulo && 
-          i.autor === item.autor
-        );
-        
-        if (itemExistente) {
-          itemExistente.quantidade += item.quantidade || 1;
-        } else {
-          carrinhoAgrupado.push({
-            ...item,
-            quantidade: item.quantidade || 1
-          });
-        }
-      });
-      
-      carrinho.value = carrinhoAgrupado;
-    } catch (e) {
-      console.error("Erro ao parsear o carrinho da query string", e);
-    }
-  }
-});
 </script>
-
 
 <template>
   <header>
@@ -92,7 +56,12 @@ onMounted(() => {
       <li><a href="#">Envio</a></li>
       <span><li><a href="#">Devoluções</a></li></span>
     </ul>
-    <span><a @click="redirecionarParaOutraPagina" href="#"><img src="../Images/icons/carrinho-de-compras.png" alt=""></a></span>
+    <span class="carrinho-icon">
+      <a @click="redirecionarParaOutraPagina" href="#">
+        <img src="../Images/icons/carrinho-de-compras.png" alt="">
+        <span v-if="carrinho.length > 0" class="contador">{{ totalItens }}</span>
+      </a>
+    </span>
     <span><a href="#"><img src="../Images/icons/coracao.png" alt=""></a></span>
     <a href="#"><img src="../Images/icons/do-utilizador.png" alt=""></a>
   </header>
@@ -312,5 +281,22 @@ div.emparelhado {
 .fade-enter-from, .fade-leave-to {
   opacity: 0;
   transform: translateY(10px);
+}
+
+/* contador carrinho */
+.carrinho-icon {
+  position: relative;
+}
+
+.contador {
+  position: absolute;
+  top: 10px;
+  right: 4px;
+  background: #1d8548;
+  color: white;
+  border-radius: 100%;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: bold;
 }
 </style>
