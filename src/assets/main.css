@@ -153,35 +153,35 @@ a{
   }
 /*footer*/
 footer{
-    background-color: #27AE60;
-    margin-top: 100px;
-    color: #F1F1F1;
-    padding: 40px;
-    display: flex;
-  }
-  footer div.divisao1{
-    margin: 0 1100px 0 100px;
-  }
-  footer div p.principal{
-    margin: 0 0 20px 0;
-    font-weight: 450;
-  }
-  footer div.divisao1 img{
-    margin: 0 20px 0 0;
-  }
-  footer div ul li{
-    list-style: none;
-    display: flex;
-  }
-  footer div.divisao2 ul li img{
-    margin: 0 10px 20px -40px;
-  }
-  footer div.cartoes img{
-    margin: 40px 15px 70px 0;
-  }
-  div.footinho{
-  border-top: #F1F1F1 1px solid;
-  }
-  p.transp{
-    margin: 0 0 0 -620px;
-  }
+  background-color: #2c3e60;
+  margin-top: 100px;
+  color: #F1F1F1;
+  padding: 40px;
+  display: flex;
+}
+footer div.divisao1{
+  margin: 0 1100px 0 100px;
+}
+footer div p.principal{
+  margin: 0 0 20px 0;
+  font-weight: 450;
+}
+footer div.divisao1 img{
+  margin: 0 20px 0 0;
+}
+footer div ul li{
+  list-style: none;
+  display: flex;
+}
+footer div.divisao2 ul li img{
+  margin: 0 10px 20px -40px;
+}
+footer div.cartoes img{
+  margin: 40px 15px 70px 0;
+}
+div.footinho{
+border-top: #F1F1F1 1px solid;
+}
+p.transp{
+  margin: 0 0 0 -620px;
+}
