@@ -128,7 +128,7 @@ const totalCompra = computed(() => {
         <img src="../Images/MasterCard-Logo.png" alt="MasterCard">
         <img src="../Images/VISA-card-logo.png" alt="Visa">
       </div>
-      <p class="transp">&copy; Alguns direitos reservados. IFbooks 2025.</p>
+      <p class="transp">&copy; Alguns direitos reservados. IFgames 2025.</p>
     </div>
   </footer>
 </template>

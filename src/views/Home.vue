@@ -313,7 +313,7 @@ template {
 #faixinha ul {
   display: flex;
   border-bottom: #27AE60 2px solid;
-  padding: 50px 0 50px 250px;
+  padding: 50px 0 50px 0;
   justify-content: center;
 }
 
@@ -487,36 +487,37 @@ template {
 }
 
 /* Footer */
-footer {
-  background: #2c3e50;
-  color: white;
-  padding: 50px 0;
-  margin-top: 50px;
-}
-
-.divisao1, .divisao2 {
-  display: inline-block;
-  vertical-align: top;
-  width: 48%;
-  padding: 0 2%;
-}
-
-.principal {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-  color: #27AE60;
-}
-
-.cartoes img {
-  height: 30px;
-  margin-right: 10px;
-  margin-top: 20px;
-}
-
-.transp {
-  opacity: 0.7;
-  font-size: 0.9rem;
-  margin-top: 30px;
-}
-
+footer{
+    background-color: #2c3e60;
+    margin-top: 100px;
+    color: #F1F1F1;
+    padding: 40px;
+    display: flex;
+  }
+  footer div.divisao1{
+    margin: 0 1100px 0 100px;
+  }
+  footer div p.principal{
+    margin: 0 0 20px 0;
+    font-weight: 450;
+  }
+  footer div.divisao1 img{
+    margin: 0 20px 0 0;
+  }
+  footer div ul li{
+    list-style: none;
+    display: flex;
+  }
+  footer div.divisao2 ul li img{
+    margin: 0 10px 20px -40px;
+  }
+  footer div.cartoes img{
+    margin: 40px 15px 70px 0;
+  }
+  div.footinho{
+  border-top: #F1F1F1 1px solid;
+  }
+  p.transp{
+    margin: 0 0 0 -620px;
+  }
 </style>
