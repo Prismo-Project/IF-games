@@ -54,7 +54,9 @@ const totalCompra = computed(() => {
       <li><a href="#">Termos</a></li>
       <li><a href="#">Equipe</a></li>
       <li><a href="#">Envio</a></li>
-      <span><li><a href="#">Devoluções</a></li></span>
+      <span>
+        <li><a href="#">Devoluções</a></li>
+      </span>
     </ul>
     <span class="carrinho-icon">
       <a @click="redirecionarParaOutraPagina" href="#">
@@ -69,7 +71,7 @@ const totalCompra = computed(() => {
     <h2 id="carrinho">Carrinho</h2>
     <div class="carrinho-cabecalho">
       <h2>Título</h2>
-      <h2><span class="quantidade">Quantidade</span></h2>
+      <h2>Quantidade</h2>
       <h2>Subtotal</h2>
     </div>
 
@@ -96,7 +98,7 @@ const totalCompra = computed(() => {
         </div>
       </article>
     </transition-group>
-    
+
     <div class="resumo-compra">
       <p>Total de itens: {{ totalItens }}</p>
       <p class="total-compra">Total da compra: R${{ totalCompra.toFixed(2) }}</p>
@@ -118,9 +120,15 @@ const totalCompra = computed(() => {
     <div class="divisao2">
       <p class="principal">Contato</p>
       <ul>
-        <li><img src="../Images/icons/Phone.png" alt="Telefone"><p>+55 47 40045263</p></li>
-        <li><img src="../Images/icons/Clock.png" alt="Relógio"><p>8h às 23h - Seg a Sex</p></li>
-        <li><img src="../Images/icons/Mail.png" alt="Email"><p>contato@ifgames.com</p></li>
+        <li><img src="../Images/icons/Phone.png" alt="Telefone">
+          <p>+55 47 40045263</p>
+        </li>
+        <li><img src="../Images/icons/Clock.png" alt="Relógio">
+          <p>8h às 23h - Seg a Sex</p>
+        </li>
+        <li><img src="../Images/icons/Mail.png" alt="Email">
+          <p>contato@ifgames.com</p>
+        </li>
       </ul>
 
       <div class="cartoes">
@@ -144,33 +152,25 @@ div.nada {
 }
 
 .carrinho-cabecalho {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  text-align: center;
   justify-content: space-between;
   border-bottom: 1px solid #27AE60;
   font-weight: bold;
   align-items: center;
 }
 
+.carrinho-cabecalho h2:last-child{
+text-align: right;
+}
+
 .carrinho-cabecalho h2:first-child {
-  flex: 2;
-  text-align: left; 
+text-align: left;
 }
 
 .carrinho-cabecalho h2:nth-child(2) {
-  flex: 1;
   text-align: center;
-  padding-right: 140px;
-}
-
-.carrinho-cabecalho h2:last-child {
-  flex: 1;
-  text-align: right;
-  padding-right: 40px;
-}
-
-div.titulo {
-  padding: 10px 100px 0 0;
-  font-size: 1.3rem;
   white-space: nowrap;
 }
 
@@ -188,12 +188,18 @@ div.titulo {
 }
 
 .item-carrinho {
-  display: grid;
-  grid-template-columns: 115px 2fr 1fr 1fr;
-  align-items: start; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-items: start;
   padding: 20px 0;
   border-bottom: 1px solid #ccc;
   gap: 20px;
+}
+
+.emparelhado {  
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .item-carrinho img {
@@ -203,18 +209,18 @@ div.titulo {
 }
 
 .controles-quantidade {
-  flex: 1;
+  width: auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  margin: 40px 0 0 260px ;
+align-self: right;
+gap: calc(1vw + 2px);
 }
 
 .info-subtotal {
   flex: 1;
   text-align: right;
-  padding-left: 580px;
+  padding-left: 450px;
   padding-top: 55px;
   font-weight: bold;
   color: #333;
@@ -269,16 +275,15 @@ h2#carrinho {
   background-color: #1d8548;
 }
 
-div.emparelhado {
-  display: flex;
-}
 
 /** Transitions */
-.fade-enter-active, .fade-leave-active {
+.fade-enter-active,
+.fade-leave-active {
   transition: opacity 0.4s, transform 0.4s;
 }
 
-.fade-enter-from, .fade-leave-to {
+.fade-enter-from,
+.fade-leave-to {
   opacity: 0;
   transform: translateY(10px);
 }
