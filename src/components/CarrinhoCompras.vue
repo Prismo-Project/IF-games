@@ -18,7 +18,7 @@ onMounted(() => {
   }
 });
 
-// Salvar carrinho automaticamente quando houver mudanças
+// Salvar carrinho automaticamente quando houver mudanças 
 watch(carrinho, (novoCarrinho) => {
   sessionStorage.setItem('carrinho', JSON.stringify(novoCarrinho));
 }, { deep: true });
