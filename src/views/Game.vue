@@ -7,7 +7,17 @@ const router = useRouter()
 const game = ref(null)
 const carrinho = ref([])
 
-// Lista completa de jogos (pode ser movida para um arquivo JSON depois)
+const mensagemCarrinho = ref('');
+const mostrarMensagem = ref(false);
+
+function mostrarAlerta(tituloJogo) {
+  mensagemCarrinho.value = `🎮 "${tituloJogo}" adicionado ao carrinho!`;
+  mostrarMensagem.value = true;
+  setTimeout(() => {
+    mostrarMensagem.value = false;
+  }, 2500);
+}
+
 const todosJogos = [
   {
     id: 1,
@@ -33,12 +43,12 @@ const todosJogos = [
   }
 ]
 
-// Carrega os dados do jogo quando o componente é montado
+
 onMounted(() => {
   const gameId = parseInt(route.params.id)
   game.value = todosJogos.find(g => g.id === gameId)
   
-  // Carrega o carrinho do sessionStorage
+
   const carrinhoSalvo = sessionStorage.getItem('carrinho')
   if (carrinhoSalvo) {
     carrinho.value = JSON.parse(carrinhoSalvo)
@@ -46,21 +56,7 @@ onMounted(() => {
 })
 
 function adicionarAoCarrinho() {
-  if (!game.value) return
-  
-  const itemExistente = carrinho.value.find(i => i.id === game.value.id)
-  
-  if (itemExistente) {
-    itemExistente.quantidade++
-  } else {
-    carrinho.value.push({
-      ...game.value,
-      quantidade: 1
-    })
-  }
-  
-  sessionStorage.setItem('carrinho', JSON.stringify(carrinho.value))
-  alert(`"${game.value.titulo}" foi adicionado ao carrinho!`)
+  mostrarAlerta(game.value.titulo);
 }
 </script>
 
@@ -95,6 +91,9 @@ function adicionarAoCarrinho() {
           <p>{{ game.descricao }}</p>
         </div>
       </div>
+    </div>
+    <div v-if="mostrarMensagem" class="mensagem-carrinho">
+      {{ mensagemCarrinho }}
     </div>
   </div>
   
@@ -225,5 +224,20 @@ h2 {
     max-width: 100%;
     margin: 0 auto;
   }
+}
+
+.mensagem-carrinho {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #27AE60;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  font-size: 1rem;
+  z-index: 1000;
+  transition: opacity 0.5s ease-in-out;
 }
 </style>

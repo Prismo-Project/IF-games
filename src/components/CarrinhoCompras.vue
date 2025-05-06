@@ -290,12 +290,16 @@ div.emparelhado {
 
 .contador {
   position: absolute;
-  top: 10px;
-  right: 4px;
+  top: 15px;
+  right: 5px;
   background: #1d8548;
   color: white;
-  border-radius: 100%;
-  padding: 4px 8px;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 12px;
   font-weight: bold;
 }

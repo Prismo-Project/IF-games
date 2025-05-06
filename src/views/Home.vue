@@ -472,9 +472,9 @@ template {
 
 .contador {
   position: absolute;
-  top: -5px;
-  right: -5px;
-  background: #e74c3c;
+  top: 15px;
+  right: 5px;
+  background: #1d8548;
   color: white;
   border-radius: 50%;
   width: 20px;
@@ -519,49 +519,4 @@ footer {
   margin-top: 30px;
 }
 
-/* Responsividade */
-@media (max-width: 1200px) {
-  #banner {
-    padding: 0 100px;
-    flex-direction: column;
-    text-align: center;
-  }
-  
-  #banner #text {
-    padding-top: 50px;
-  }
-  
-  #banner h1 {
-    margin: 0;
-  }
-  
-  #banner #image {
-    margin-top: 30px;
-  }
-  
-  #faixinha ul {
-    padding-left: 50px;
-  }
-}
-
-@media (max-width: 768px) {
-  #faixinha ul {
-    flex-direction: column;
-    padding-left: 20px;
-  }
-  
-  #faixinha ul li.prioridade {
-    border-left: none;
-    border-top: 1px solid #7B7881;
-    margin-left: 0;
-    padding-left: 0;
-    margin-top: 20px;
-    padding-top: 20px;
-  }
-  
-  .divisao1, .divisao2 {
-    width: 100%;
-    margin-bottom: 30px;
-  }
-}
 </style>
