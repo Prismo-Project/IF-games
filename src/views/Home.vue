@@ -5,7 +5,7 @@ import { useRouter } from 'vue-router';
 const jogos = ref([
   {
     id: 1,
-    imagem: 'https://store-images.s-microsoft.com/image/apps.25322.13715792864578983.571a71b5-a2e5-4970-8492-94d49bf62526.3472539d-960d-4b45-b15a-f8c1ea9fb9dc',
+    imagem: 'public/Images/Elden Ring.png',
     titulo: "Elden Ring",
     desenvolvedor: "FromSoftware",
     valor: 199.90,
@@ -14,65 +14,101 @@ const jogos = ref([
   },
   {
     id: 2,
-    imagem: 'https://store-images.s-microsoft.com/image/apps.34695.13942869738016799.078aba97-2f28-440f-97b6-b852e1af307a.b278e12f-c22c-4a2a-bb18-dfd26ca6cafc',
-    titulo: "RedDead 2",
-    desenvolvedor: "Rockstar Games",
-    valor: 79.90,
-    plataformas: ["PS4", "Xbox One", "PC", "Switch"],
-    lancamento: "2015"
+    imagem: 'public/Images/Cyberpunk 2077.png',
+    titulo: "Cyberpunk 2077",
+    desenvolvedor: "CD Project Red",
+    valor: 199.90,
+    plataformas: ["PS4", "Xbox Series X", "PC", "PS5"],
+    lancamento: "2020"
   },
   {
     id: 3,
-    imagem: 'https://store-images.s-microsoft.com/image/apps.62801.66515090704019777.7fa547c1-c211-4229-a4d3-3ceef762e0a4.c9aa48d1-63ab-4eb6-8839-eb6e41935837',
-    titulo: "GTA V",
-    desenvolvedor: "Rockstar Games",
-    valor: 249.90,
-    plataformas: ["PS5", "PS4"],
+    imagem: 'public/Images/Dead Cells.png',
+    titulo: "Dead Cells",
+    desenvolvedor: "Playdigious",
+    valor: 39.90,
+    plataformas: ["Switch", "PS4", "PC", "Xbox Series One"],
     lancamento: "2022"
   },
   {
     id: 4,
-    imagem: 'https://store-images.s-microsoft.com/image/apps.53095.13850085746326678.06e2dc5c-7997-46e9-a8e6-0e48b57cb13b.419e3c9d-9dd3-4a28-a9f3-a12350215871',
-    titulo: "Minecraft",
-    desenvolvedor: "Mojang",
-    valor: 229.90,
-    plataformas: ["PS5", "PS4"],
-    lancamento: "2022"
+    imagem: 'public/Images/Fallout 4.png',
+    titulo: "Fallout 4",
+    desenvolvedor: "Bethesda",
+    valor: 89.90,
+    plataformas: ["Xbox One", "PS4", "Switch" ,"PC"],
+    lancamento: "2015"
   },
   {
     id: 5,
-    imagem: 'https://store-images.s-microsoft.com/image/apps.54508.13768907753672648.dcd706bb-ce91-4b3f-9525-10b1d4af8423.ad8946cd-a4cb-4ea2-bbf7-a05b1a4f4126',
-    titulo: "Oblivion",
-    desenvolvedor: "Bethesda",
+    imagem: 'public/Images/Life is Strange DE.png',
+    titulo: "Life is Strange ",
+    desenvolvedor: "Square Enix",
     valor: 299.90,
-    plataformas: ["Xbox Series X", "PC"],
-    lancamento: "2023"
+    plataformas: ["Xbox Series X", "PC", "Switch", "PS5"],
+    lancamento: "2024"
   },
   {
     id: 6,
-    imagem: 'https://store-images.s-microsoft.com/image/apps.29867.14020606539089642.f080e5a8-2e29-4355-a9e1-8aad7f690719.9f82ea01-f518-478d-86fc-817053e27d86',
-    titulo: "Phasmofobia",
-    desenvolvedor: "Nao sei",
-    valor: 349.90,
-    plataformas: ["Switch"],
+    imagem: 'public/Images/The elders scrolls V.png',
+    titulo: "The Elder scrolls V",
+    desenvolvedor: "Bethesda",
+    valor: 89.90,
+    plataformas: ["PS4", "Xbox Series X", "PC"],
     lancamento: "2023"
   },
   {
     id: 7,
-    imagem: 'https://store-images.s-microsoft.com/image/apps.39617.13862251612333050.ec09080a-b13c-432f-96c1-4c1d38bfef9c.b0deca43-6ba3-4ec9-9013-4b1b0763011d',
-    titulo: "Fifa",
-    desenvolvedor: "Nao sei",
+    imagem: 'public/Images/The Last of Us.png',
+    titulo: "The Last of Us",
+    desenvolvedor: "Naughty Dog",
     valor: 349.90,
-    plataformas: ["Switch"],
-    lancamento: "2023"
+    plataformas: ["PS4", "PS5", "PC"],
+    lancamento: "2024"
   },
   {
     id: 8,
-    imagem: 'https://store-images.s-microsoft.com/image/apps.39617.13862251612333050.ec09080a-b13c-432f-96c1-4c1d38bfef9c.b0deca43-6ba3-4ec9-9013-4b1b0763011d',
-    titulo: "Fifa",
-    desenvolvedor: "Nao sei",
+    imagem: 'public/Images/Until Dawn.png',
+    titulo: "Until Dawn",
+    desenvolvedor: "Supermassive Games",
+    valor: 224.90,
+    plataformas: ["PS4","PS5", "PC"],
+    lancamento: "2015"
+  },
+  {
+    id: 9,
+    imagem: 'public/Images/Sea of thieves.png',
+    titulo: "Sea of Thieves",
+    desenvolvedor: "Rare",
+    valor: 89.90,
+    plataformas: ["PS5", "Xbox Series X","Xbox Series S", "PC"],
+    lancamento: "2018"
+  },
+  {
+    id: 10,
+    imagem: 'public/Images/Street fighter.png',
+    titulo: "Street Fighter 6",
+    desenvolvedor: "Capcom",
+    valor: 169.90,
+    plataformas: ["PS5", "Xbox Series X", "PC"],
+    lancamento: "2023"
+  },
+  {
+    id: 11,
+    imagem: 'public/Images/Persona 3 Reload.png',
+    titulo: "Persona 3 Reload",
+    desenvolvedor: "Atlus",
+    valor: 219.90,
+    plataformas: ["PS5", "Xbox Series X", "PC"],
+    lancamento: "2024"
+  },
+  {
+    id: 12,
+    imagem: 'public/Images/Metal Gear.png',
+    titulo: "Metal Gear Solid A",
+    desenvolvedor: "Konami",
     valor: 349.90,
-    plataformas: ["Switch"],
+    plataformas: ["PS5", "Xbox Series X", "PC"],
     lancamento: "2023"
   }
  
@@ -138,7 +174,7 @@ function mostrarAlerta(tituloJogo) {
     <h3><a href="#" @click.prevent="irParaHome">IFgames</a></h3>
     <p>apreço a <br> cultura</p>
     <input type="text" id="searchInput" placeholder="Pesquisar">
-    <button onclick="pesquisar()"><img src="../Images/icons/procurar.png" alt=""></button>
+    <button onclick="pesquisar()"><img src="/public/Images/icons/procurar.png" alt=""></button>
     <ul>
       <li><a href="#">Termos</a></li>
       <li><a href="#">Equipe</a></li>
@@ -149,20 +185,20 @@ function mostrarAlerta(tituloJogo) {
     </ul>
     <span class="carrinho-icon">
       <a @click="redirecionarParaCarrinho" href="#">
-        <img src="../Images/icons/carrinho-de-compras.png" alt="">
+        <img src="/public/Images/icons/carrinho-de-compras.png" alt="">
         <span v-if="carrinho.length > 0" class="contador">
           {{ carrinho.reduce((total, item) => total + (item.quantidade || 1), 0) }}
         </span>
       </a>
     </span>
-    <span><a href="#"><img src="../Images/icons/coracao.png" alt=""></a></span>
-    <a href="#"><img src="../Images/icons/do-utilizador.png" alt=""></a>
+    <span><a href="#"><img src="/public/Images/icons/coracao.png" alt=""></a></span>
+    <a href="#"><img src="/public/Images/icons/do-utilizador.png" alt=""></a>
   </header>
 
   <div id="banner">
     <div id="text">
       <span>
-        <p>Jogo de Maio</p>
+        <p>Jogo do mês</p>
       </span>
       <h1>Elden Ring</h1>
       <p>the latest fantasy action-RPG <br>from Hidetaka Miyazaki(Bloodborne, Dark Souls) <br>& George R. R. Martin (Game of Thrones).</p>
@@ -171,19 +207,19 @@ function mostrarAlerta(tituloJogo) {
       </router-link>
     </div>
     <div id="image">
-      <img src="/src/Images/elden-ring-capa.png" alt="Elden Ring">
+      <img src="/public/Images/elden-ring-capa.png" alt="Elden Ring">
     </div>
   </div>
   
   <div id="faixinha">
     <ul>
-      <li><img src="../Images/icons/lado-do-caminhao.png" alt=""><a href="#">
+      <li><img src="/public/Images/icons/lado-do-caminhao.png" alt=""><a href="#">
           <h3>Frete grátis para SC</h3>
         </a></li>
-      <li class="prioridade"><img src="../Images/icons/estrela.png" alt=""><a href="#">
+      <li class="prioridade"><img src="/public/Images/icons/estrela.png" alt=""><a href="#">
           <h3>Jogos recomendados</h3>
         </a></li>
-      <li class="prioridade"><img src="../Images/icons/controle-de-video-game.png" alt=""><a href="#">
+      <li class="prioridade"><img src="/public/Images/icons/controle-de-video-game.png" alt=""><a href="#">
           <h3>Mais vendidos</h3>
         </a></li>
     </ul>
@@ -218,28 +254,28 @@ function mostrarAlerta(tituloJogo) {
   <footer>
     <div class="divisao1">
       <p class="principal">IFgames</p>
-      <a href="#"><img src="../Images/icons/facebook.png" alt="facebook"></a>
-      <a href="#"><img src="../Images/icons/instagram.png" alt="instagram"></a>
-      <a href="#"><img src="../Images/icons/twitter.png" alt="twitter"></a>
+      <a href="https://www.facebook.com/?locale=pt_BR"><img src="/public/Images/icons/facebook.png" alt="facebook"></a>
+      <a href="https://www.instagram.com/"><img src="/public/Images/icons/instagram.png" alt="instagram"></a>
+      <a href="https://x.com/?lang=pt"><img src="/public/Images/icons/twitter.png" alt="twitter"></a>
     </div>
     <div class="divisao2">
       <p class="principal">Contato</p>
       <ul>
-        <li><img src="../Images/icons/Phone.png" alt="Telefone">
+        <li><img src="/public/Images/icons/Phone.png" alt="Telefone">
           <p>+55 47 40045263</p>
         </li>
-        <li><img src="../Images/icons/Clock.png" alt="Relógio">
+        <li><img src="/public/Images/icons/Clock.png" alt="Relógio">
           <p>8h às 23h - Seg a Sex</p>
         </li>
-        <li><img src="../Images/icons/Mail.png" alt="Email">
+        <li><img src="/public/Images/icons/Mail.png" alt="Email">
           <p>contato@ifgames.com</p>
         </li>
       </ul>
 
       <div class="cartoes">
-        <img src="../Images/paipalCard-Logo.png" alt="PayPal">
-        <img src="../Images/MasterCard-Logo.png" alt="MasterCard">
-        <img src="../Images/VISA-card-logo.png" alt="Visa">
+        <img src="/public/Images/paipalCard-Logo.png" alt="PayPal">
+        <img src="/public/Images/MasterCard-Logo.png" alt="MasterCard">
+        <img src="/public/Images/VISA-card-logo.png" alt="Visa">
       </div>
       <p class="transp">&copy; Alguns direitos reservados. IFgames 2025.</p>
     </div>
@@ -313,7 +349,7 @@ template {
 #faixinha ul {
   display: flex;
   border-bottom: #27AE60 2px solid;
-  padding: 50px 0 50px 250px;
+  padding: 50px 0 50px 0;
   justify-content: center;
 }
 
@@ -375,12 +411,12 @@ template {
 .card .img {
   padding: 0px 20px 20px 20px;
   text-align: center;
-  background: #f9f9f9;
 }
 
 .game-image {
   object-fit: contain;
   transition: transform 0.3s;
+  border-radius: 4PX;
 }
 
 .card:hover .game-image {
@@ -487,36 +523,37 @@ template {
 }
 
 /* Footer */
-footer {
-  background: #2c3e50;
-  color: white;
-  padding: 50px 0;
-  margin-top: 50px;
-}
-
-.divisao1, .divisao2 {
-  display: inline-block;
-  vertical-align: top;
-  width: 48%;
-  padding: 0 2%;
-}
-
-.principal {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-  color: #27AE60;
-}
-
-.cartoes img {
-  height: 30px;
-  margin-right: 10px;
-  margin-top: 20px;
-}
-
-.transp {
-  opacity: 0.7;
-  font-size: 0.9rem;
-  margin-top: 30px;
-}
-
+footer{
+    background-color: #2c3e60;
+    margin-top: 100px;
+    color: #F1F1F1;
+    padding: 40px;
+    display: flex;
+  }
+  footer div.divisao1{
+    margin: 0 1100px 0 100px;
+  }
+  footer div p.principal{
+    margin: 0 0 20px 0;
+    font-weight: 450;
+  }
+  footer div.divisao1 img{
+    margin: 0 20px 0 0;
+  }
+  footer div ul li{
+    list-style: none;
+    display: flex;
+  }
+  footer div.divisao2 ul li img{
+    margin: 0 10px 20px -40px;
+  }
+  footer div.cartoes img{
+    margin: 40px 15px 70px 0;
+  }
+  div.footinho{
+  border-top: #F1F1F1 1px solid;
+  }
+  p.transp{
+    margin: 0 0 0 -620px;
+  }
 </style>

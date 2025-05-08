@@ -18,7 +18,7 @@ onMounted(() => {
   }
 });
 
-// Salvar carrinho automaticamente quando houver mudanças
+// Salvar carrinho automaticamente quando houver mudanças 
 watch(carrinho, (novoCarrinho) => {
   sessionStorage.setItem('carrinho', JSON.stringify(novoCarrinho));
 }, { deep: true });
@@ -49,38 +49,40 @@ const totalCompra = computed(() => {
     <h3><a href="#" @click.prevent="irParaHome">IFgames</a></h3>
     <p>apreço a <br> cultura</p>
     <input type="text" id="searchInput" placeholder="Pesquisar">
-    <button onclick="pesquisar()"><img src="../Images/icons/procurar.png" alt=""></button>
+    <button onclick="pesquisar()"><img src="/public/Images/icons/procurar.png" alt=""></button>
     <ul>
       <li><a href="#">Termos</a></li>
       <li><a href="#">Equipe</a></li>
       <li><a href="#">Envio</a></li>
-      <span><li><a href="#">Devoluções</a></li></span>
+      <span>
+        <li><a href="#">Devoluções</a></li>
+      </span>
     </ul>
     <span class="carrinho-icon">
       <a @click="redirecionarParaOutraPagina" href="#">
-        <img src="../Images/icons/carrinho-de-compras.png" alt="">
+        <img src="/public/Images/icons/carrinho-de-compras.png" alt="">
         <span v-if="carrinho.length > 0" class="contador">{{ totalItens }}</span>
       </a>
     </span>
-    <span><a href="#"><img src="../Images/icons/coracao.png" alt=""></a></span>
-    <a href="#"><img src="../Images/icons/do-utilizador.png" alt=""></a>
+    <span><a href="#"><img src="/public/Images/icons/coracao.png" alt=""></a></span>
+    <a href="#"><img src="/public/Images/icons/do-utilizador.png" alt=""></a>
   </header>
+  
   <div v-if="carrinho.length > 0" class="compras">
     <h2 id="carrinho">Carrinho</h2>
     <div class="carrinho-cabecalho">
       <h2>Título</h2>
-      <h2><span class="quantidade">Quantidade</span></h2>
+      <h2>Quantidade</h2>
       <h2>Subtotal</h2>
     </div>
 
     <transition-group name="fade" tag="div">
       <article v-for="item in carrinho" :key="item.id" class="item-carrinho">
-        <img :src="item.livro" alt="Capa do livro" width="70" />
+        <img :src="item.imagem" alt="Capa do livro" width="70" />
         <div class="info">
           <div class="emparelhado">
             <div class="titulo">
               <h3>{{ item.titulo }}</h3>
-              <p>{{ item.autor }}</p>
               <p>Preço: R${{ item.valor.toFixed(2) }}</p>
             </div>
 
@@ -96,7 +98,7 @@ const totalCompra = computed(() => {
         </div>
       </article>
     </transition-group>
-    
+
     <div class="resumo-compra">
       <p>Total de itens: {{ totalItens }}</p>
       <p class="total-compra">Total da compra: R${{ totalCompra.toFixed(2) }}</p>
@@ -111,24 +113,30 @@ const totalCompra = computed(() => {
   <footer>
     <div class="divisao1">
       <p class="principal">IFgames</p>
-      <a href="#"><img src="../Images/icons/facebook.png" alt="facebook"></a>
-      <a href="#"><img src="../Images/icons/instagram.png" alt="instagram"></a>
-      <a href="#"><img src="../Images/icons/twitter.png" alt="twitter"></a>
+      <a href="https://www.facebook.com/?locale=pt_BR"><img src="/public/Images/icons/facebook.png" alt="facebook"></a>
+      <a href="https://www.instagram.com/"><img src="/public/Images/icons/instagram.png" alt="instagram"></a>
+      <a href="https://x.com/?lang=pt"><img src="/public/Images/icons/twitter.png" alt="twitter"></a>
     </div>
     <div class="divisao2">
       <p class="principal">Contato</p>
       <ul>
-        <li><img src="../Images/icons/Phone.png" alt="Telefone"><p>+55 47 40045263</p></li>
-        <li><img src="../Images/icons/Clock.png" alt="Relógio"><p>8h às 23h - Seg a Sex</p></li>
-        <li><img src="../Images/icons/Mail.png" alt="Email"><p>contato@ifgames.com</p></li>
+        <li><img src="/public/Images/icons/Phone.png" alt="Telefone">
+          <p>+55 47 40045263</p>
+        </li>
+        <li><img src="/public/Images/icons/Clock.png" alt="Relógio">
+          <p>8h às 23h - Seg a Sex</p>
+        </li>
+        <li><img src="/public/Images/icons/Mail.png" alt="Email">
+          <p>contato@ifgames.com</p>
+        </li>
       </ul>
 
       <div class="cartoes">
-        <img src="../Images/paipalCard-Logo.png" alt="PayPal">
-        <img src="../Images/MasterCard-Logo.png" alt="MasterCard">
-        <img src="../Images/VISA-card-logo.png" alt="Visa">
+        <img src="/public/Images/paipalCard-Logo.png" alt="PayPal">
+        <img src="/public/Images/MasterCard-Logo.png" alt="MasterCard">
+        <img src="/public/Images/VISA-card-logo.png" alt="Visa">
       </div>
-      <p class="transp">&copy; Alguns direitos reservados. IFbooks 2025.</p>
+      <p class="transp">&copy; Alguns direitos reservados. IFgames 2025.</p>
     </div>
   </footer>
 </template>
@@ -144,34 +152,58 @@ div.nada {
 }
 
 .carrinho-cabecalho {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  text-align: center;
   justify-content: space-between;
   border-bottom: 1px solid #27AE60;
   font-weight: bold;
   align-items: center;
 }
 
+.carrinho-cabecalho h2:last-child{
+text-align: right;
+}
+
 .carrinho-cabecalho h2:first-child {
-  flex: 2;
-  text-align: left; 
+text-align: left;
 }
 
 .carrinho-cabecalho h2:nth-child(2) {
-  flex: 1;
   text-align: center;
-  padding-right: 140px;
-}
-
-.carrinho-cabecalho h2:last-child {
-  flex: 1;
-  text-align: right;
-  padding-right: 40px;
-}
-
-div.titulo {
-  padding: 10px 100px 0 0;
-  font-size: 1.3rem;
   white-space: nowrap;
+}
+
+.item-carrinho {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #ccc;
+  gap: 20px;
+}
+
+.emparelhado {  
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.titulo {
+  min-width: 580px;
+}
+
+.item-carrinho img {
+  width: 115px;
+  height: auto;
+  border-radius: 4px;
+}   
+
+.controles-quantidade {
+  display: flex;
+  align-items: center;
+  align-self: left;
+  gap: calc(1vw + 2px);
 }
 
 .controles-quantidade button {
@@ -187,39 +219,19 @@ div.titulo {
   justify-content: center;
 }
 
-.item-carrinho {
-  display: grid;
-  grid-template-columns: 115px 2fr 1fr 1fr;
-  align-items: start; 
-  padding: 20px 0;
-  border-bottom: 1px solid #ccc;
-  gap: 20px;
-}
-
-.item-carrinho img {
-  width: 115px;
-  height: auto;
-  border-radius: 4px;
-}
-
-.controles-quantidade {
-  flex: 1;
+.controles-quantidade span {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  margin: 40px 0 0 260px ;
+  min-width: 30px;
 }
 
 .info-subtotal {
-  flex: 1;
   text-align: right;
-  padding-left: 580px;
-  padding-top: 55px;
+  padding: 55px 50px 0 450px;
   font-weight: bold;
   color: #333;
   margin-top: 10px;
-  white-space: nowrap;
   font-size: 1.5rem;
 }
 
@@ -269,16 +281,15 @@ h2#carrinho {
   background-color: #1d8548;
 }
 
-div.emparelhado {
-  display: flex;
-}
 
 /** Transitions */
-.fade-enter-active, .fade-leave-active {
+.fade-enter-active,
+.fade-leave-active {
   transition: opacity 0.4s, transform 0.4s;
 }
 
-.fade-enter-from, .fade-leave-to {
+.fade-enter-from,
+.fade-leave-to {
   opacity: 0;
   transform: translateY(10px);
 }
