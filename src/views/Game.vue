@@ -21,7 +21,7 @@ function mostrarAlerta(tituloJogo) {
 const todosJogos = [
 {
   id: 1,
-  imagem: 'src/Images/Elden Ring.png',
+  imagem: '/public/Images/Elden Ring.png',
   titulo: "Elden Ring",
   desenvolvedor: "FromSoftware",
   valor: 199.90,
@@ -32,7 +32,7 @@ const todosJogos = [
 },
 {
   id: 2,
-  imagem: 'src/Images/Cyberpunk 2077.png',
+  imagem: '/public/Images/Cyberpunk 2077.png',
   titulo: "Cyberpunk 2077",
   desenvolvedor: "CD Projekt Red",
   valor: 199.90,
@@ -43,7 +43,7 @@ const todosJogos = [
 },
 {
   id: 3,
-  imagem: 'src/Images/Dead Cells.png',
+  imagem: '/public/Images/Dead Cells.png',
   titulo: "Dead Cells",
   desenvolvedor: "Playdigious",
   valor: 39.90,
@@ -54,7 +54,7 @@ const todosJogos = [
 },
 {
   id: 4,
-  imagem: 'src/Images/Fallout 4.png',
+  imagem: '/public/Images/Fallout 4.png',
   titulo: "Fallout 4",
   desenvolvedor: "Bethesda",
   valor: 89.90,
@@ -65,8 +65,8 @@ const todosJogos = [
 },
 {
   id: 5,
-  imagem: 'src/Images/Life is Strange DE.png',
-  titulo: "Life is Strange",
+  imagem: '/public/Images/Life is Strange DE.png',
+  titulo: "Life is Strange: Double Exposure",
   desenvolvedor: "Square Enix",
   valor: 299.90,
   classificacao: "16+",
@@ -76,7 +76,7 @@ const todosJogos = [
 },
 {
   id: 6,
-  imagem: 'src/Images/The elders scrolls V.png',
+  imagem: '/public/Images/The elders scrolls V.png',
   titulo: "The Elder Scrolls V: Skyrim",
   desenvolvedor: "Bethesda",
   valor: 89.90,
@@ -87,7 +87,7 @@ const todosJogos = [
 },
 {
   id: 7,
-  imagem: 'src/Images/The Last of Us.png',
+  imagem: '/public/Images/The Last of Us.png',
   titulo: "The Last of Us",
   desenvolvedor: "Naughty Dog",
   valor: 349.90,
@@ -98,7 +98,7 @@ const todosJogos = [
 },
 {
   id: 8,
-  imagem: 'src/Images/Until Dawn.png',
+  imagem: '/public/Images/Until Dawn.png',
   titulo: "Until Dawn",
   desenvolvedor: "Supermassive Games",
   valor: 224.90,
@@ -109,7 +109,7 @@ const todosJogos = [
 },
 {
   id: 9,
-  imagem: 'src/Images/Sea of thieves.png',
+  imagem: '/public/Images/Sea of thieves.png',
   titulo: "Sea of Thieves",
   desenvolvedor: "Rare",
   valor: 89.90,
@@ -120,7 +120,7 @@ const todosJogos = [
 },
 {
   id: 10,
-  imagem: 'src/Images/Street fighter.png',
+  imagem: '/public/Images/Street fighter.png',
   titulo: "Street Fighter 6",
   desenvolvedor: "Capcom",
   valor: 169.90,
@@ -131,7 +131,7 @@ const todosJogos = [
 },
 {
   id: 11,
-  imagem: 'src/Images/Persona 3 Reload.png',
+  imagem: '/public/Images/Persona 3 Reload.png',
   titulo: "Persona 3 Reload",
   desenvolvedor: "Atlus",
   valor: 219.90,
@@ -142,7 +142,7 @@ const todosJogos = [
 },
 {
   id: 12,
-  imagem: 'src/Images/Metal Gear.png',
+  imagem: '/public/Images/Metal Gear.png',
   titulo: "Metal Gear Solid Δ: Snake Eater",
   desenvolvedor: "Konami",
   valor: 349.90,
@@ -150,15 +150,11 @@ const todosJogos = [
   descricao: "Metal Gear Solid Δ é um remake fiel do clássico 'Snake Eater', centrado na origem do lendário Big Boss. O jogo combina furtividade, narrativa complexa e ambientação em selvas hostis da Guerra Fria. Com gráficos renovados e fidelidade à história original, promete agradar fãs antigos e novos jogadores.",
   plataformas: ["PS5", "Xbox Series X", "PC"],
   lancamento: "2023"
-}
-
-]
-
+}]
 
 onMounted(() => {
   const gameId = parseInt(route.params.id)
   game.value = todosJogos.find(g => g.id === gameId)
-  
 
   const carrinhoSalvo = sessionStorage.getItem('carrinho')
   if (carrinhoSalvo) {
@@ -174,7 +170,7 @@ function adicionarAoCarrinho() {
 <template>
   
   <div v-if="game" class="pagina-game">
-    <button @click="router.go(-1)" class="botao-voltar">← Voltar</button>
+    <button @click="router.go(-1)" class="botao-voltar">◄ Voltar</button>
     
     <div class="container-game">
       <div class="capa-container">
@@ -249,6 +245,7 @@ function adicionarAoCarrinho() {
 
 .capa-game {
   width: 100%;
+  margin-top: 50px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
@@ -261,6 +258,7 @@ h1 {
   font-size: 2rem;
   color: #333;
   margin-bottom: 0.5rem;
+  text-align: left;
 }
 
 h2 {
