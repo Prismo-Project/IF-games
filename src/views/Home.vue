@@ -5,7 +5,7 @@ import { useRouter } from 'vue-router';
 const jogos = ref([
   {
     id: 1,
-    imagem: 'src/Images/Elden Ring.png',
+    imagem: 'public/Images/Elden Ring.png',
     titulo: "Elden Ring",
     desenvolvedor: "FromSoftware",
     valor: 199.90,
@@ -14,7 +14,7 @@ const jogos = ref([
   },
   {
     id: 2,
-    imagem: 'src/Images/Cyberpunk 2077.png',
+    imagem: 'public/Images/Cyberpunk 2077.png',
     titulo: "Cyberpunk 2077",
     desenvolvedor: "CD Project Red",
     valor: 199.90,
@@ -23,7 +23,7 @@ const jogos = ref([
   },
   {
     id: 3,
-    imagem: 'src/Images/Dead Cells.png',
+    imagem: 'public/Images/Dead Cells.png',
     titulo: "Dead Cells",
     desenvolvedor: "Playdigious",
     valor: 39.90,
@@ -32,7 +32,7 @@ const jogos = ref([
   },
   {
     id: 4,
-    imagem: 'src/Images/Fallout 4.png',
+    imagem: 'public/Images/Fallout 4.png',
     titulo: "Fallout 4",
     desenvolvedor: "Bethesda",
     valor: 89.90,
@@ -41,7 +41,7 @@ const jogos = ref([
   },
   {
     id: 5,
-    imagem: 'src/Images/Life is Strange DE.png',
+    imagem: 'public/Images/Life is Strange DE.png',
     titulo: "Life is Strange ",
     desenvolvedor: "Square Enix",
     valor: 299.90,
@@ -50,7 +50,7 @@ const jogos = ref([
   },
   {
     id: 6,
-    imagem: 'src/Images/The elders scrolls V.png',
+    imagem: 'public/Images/The elders scrolls V.png',
     titulo: "The Elder scrolls V",
     desenvolvedor: "Bethesda",
     valor: 89.90,
@@ -59,7 +59,7 @@ const jogos = ref([
   },
   {
     id: 7,
-    imagem: 'src/Images/The Last of Us.png',
+    imagem: 'public/Images/The Last of Us.png',
     titulo: "The Last of Us",
     desenvolvedor: "Naughty Dog",
     valor: 349.90,
@@ -68,7 +68,7 @@ const jogos = ref([
   },
   {
     id: 8,
-    imagem: 'src/Images/Until Dawn.png',
+    imagem: 'public/Images/Until Dawn.png',
     titulo: "Until Dawn",
     desenvolvedor: "Supermassive Games",
     valor: 224.90,
@@ -77,7 +77,7 @@ const jogos = ref([
   },
   {
     id: 9,
-    imagem: 'src/Images/Sea of thieves.png',
+    imagem: 'public/Images/Sea of thieves.png',
     titulo: "Sea of Thieves",
     desenvolvedor: "Rare",
     valor: 89.90,
@@ -86,7 +86,7 @@ const jogos = ref([
   },
   {
     id: 10,
-    imagem: 'src/Images/Street fighter.png',
+    imagem: 'public/Images/Street fighter.png',
     titulo: "Street Fighter 6",
     desenvolvedor: "Capcom",
     valor: 169.90,
@@ -94,8 +94,8 @@ const jogos = ref([
     lancamento: "2023"
   },
   {
-    id: 7,
-    imagem: 'src/Images/Persona 3 Reload.png',
+    id: 11,
+    imagem: 'public/Images/Persona 3 Reload.png',
     titulo: "Persona 3 Reload",
     desenvolvedor: "Atlus",
     valor: 219.90,
@@ -103,8 +103,8 @@ const jogos = ref([
     lancamento: "2024"
   },
   {
-    id: 8,
-    imagem: 'src/Images/Metal Gear.png',
+    id: 12,
+    imagem: 'public/Images/Metal Gear.png',
     titulo: "Metal Gear Solid A",
     desenvolvedor: "Konami",
     valor: 349.90,
@@ -185,20 +185,20 @@ function mostrarAlerta(tituloJogo) {
     </ul>
     <span class="carrinho-icon">
       <a @click="redirecionarParaCarrinho" href="#">
-        <img src="../Images/icons/carrinho-de-compras.png" alt="">
+        <img src="/public/Images/icons/carrinho-de-compras.png" alt="">
         <span v-if="carrinho.length > 0" class="contador">
           {{ carrinho.reduce((total, item) => total + (item.quantidade || 1), 0) }}
         </span>
       </a>
     </span>
-    <span><a href="#"><img src="../Images/icons/coracao.png" alt=""></a></span>
-    <a href="#"><img src="../Images/icons/do-utilizador.png" alt=""></a>
+    <span><a href="#"><img src="/public/Images/icons/coracao.png" alt=""></a></span>
+    <a href="#"><img src="/public/Images/icons/do-utilizador.png" alt=""></a>
   </header>
 
   <div id="banner">
     <div id="text">
       <span>
-        <p>Jogo de Maio</p>
+        <p>Jogo do mês</p>
       </span>
       <h1>Elden Ring</h1>
       <p>the latest fantasy action-RPG <br>from Hidetaka Miyazaki(Bloodborne, Dark Souls) <br>& George R. R. Martin (Game of Thrones).</p>
@@ -207,19 +207,19 @@ function mostrarAlerta(tituloJogo) {
       </router-link>
     </div>
     <div id="image">
-      <img src="/src/Images/elden-ring-capa.png" alt="Elden Ring">
+      <img src="/public/Images/elden-ring-capa.png" alt="Elden Ring">
     </div>
   </div>
   
   <div id="faixinha">
     <ul>
-      <li><img src="../Images/icons/lado-do-caminhao.png" alt=""><a href="#">
+      <li><img src="/public/Images/icons/lado-do-caminhao.png" alt=""><a href="#">
           <h3>Frete grátis para SC</h3>
         </a></li>
-      <li class="prioridade"><img src="../Images/icons/estrela.png" alt=""><a href="#">
+      <li class="prioridade"><img src="/public/Images/icons/estrela.png" alt=""><a href="#">
           <h3>Jogos recomendados</h3>
         </a></li>
-      <li class="prioridade"><img src="../Images/icons/controle-de-video-game.png" alt=""><a href="#">
+      <li class="prioridade"><img src="/public/Images/icons/controle-de-video-game.png" alt=""><a href="#">
           <h3>Mais vendidos</h3>
         </a></li>
     </ul>
@@ -254,28 +254,28 @@ function mostrarAlerta(tituloJogo) {
   <footer>
     <div class="divisao1">
       <p class="principal">IFgames</p>
-      <a href="#"><img src="../Images/icons/facebook.png" alt="facebook"></a>
-      <a href="#"><img src="../Images/icons/instagram.png" alt="instagram"></a>
-      <a href="#"><img src="../Images/icons/twitter.png" alt="twitter"></a>
+      <a href="https://www.facebook.com/?locale=pt_BR"><img src="/public/Images/icons/facebook.png" alt="facebook"></a>
+      <a href="https://www.instagram.com/"><img src="/public/Images/icons/instagram.png" alt="instagram"></a>
+      <a href="https://x.com/?lang=pt"><img src="/public/Images/icons/twitter.png" alt="twitter"></a>
     </div>
     <div class="divisao2">
       <p class="principal">Contato</p>
       <ul>
-        <li><img src="../Images/icons/Phone.png" alt="Telefone">
+        <li><img src="/public/Images/icons/Phone.png" alt="Telefone">
           <p>+55 47 40045263</p>
         </li>
-        <li><img src="../Images/icons/Clock.png" alt="Relógio">
+        <li><img src="/public/Images/icons/Clock.png" alt="Relógio">
           <p>8h às 23h - Seg a Sex</p>
         </li>
-        <li><img src="../Images/icons/Mail.png" alt="Email">
+        <li><img src="/public/Images/icons/Mail.png" alt="Email">
           <p>contato@ifgames.com</p>
         </li>
       </ul>
 
       <div class="cartoes">
-        <img src="../Images/paipalCard-Logo.png" alt="PayPal">
-        <img src="../Images/MasterCard-Logo.png" alt="MasterCard">
-        <img src="../Images/VISA-card-logo.png" alt="Visa">
+        <img src="/public/Images/paipalCard-Logo.png" alt="PayPal">
+        <img src="/public/Images/MasterCard-Logo.png" alt="MasterCard">
+        <img src="/public/Images/VISA-card-logo.png" alt="Visa">
       </div>
       <p class="transp">&copy; Alguns direitos reservados. IFgames 2025.</p>
     </div>
@@ -411,7 +411,6 @@ template {
 .card .img {
   padding: 0px 20px 20px 20px;
   text-align: center;
-  background: #f9f9f9;
 }
 
 .game-image {
