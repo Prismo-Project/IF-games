@@ -174,7 +174,7 @@ function mostrarAlerta(tituloJogo) {
     <h3><a href="#" @click.prevent="irParaHome">IFgames</a></h3>
     <p>apreço a <br> cultura</p>
     <input type="text" id="searchInput" placeholder="Pesquisar">
-    <button onclick="pesquisar()"><img src="../Images/icons/procurar.png" alt=""></button>
+    <button onclick="pesquisar()"><img src="/public/Images/icons/procurar.png" alt=""></button>
     <ul>
       <li><a href="#">Termos</a></li>
       <li><a href="#">Equipe</a></li>
