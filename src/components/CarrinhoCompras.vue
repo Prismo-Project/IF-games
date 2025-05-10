@@ -10,7 +10,6 @@ const irParaHome = () => {
 
 const carrinho = ref([]);
 
-// Carregar carrinho do sessionStorage ao iniciar
 onMounted(() => {
   const carrinhoSalvo = sessionStorage.getItem('carrinho');
   if (carrinhoSalvo) {
@@ -18,7 +17,6 @@ onMounted(() => {
   }
 });
 
-// Salvar carrinho automaticamente quando houver mudanças 
 watch(carrinho, (novoCarrinho) => {
   sessionStorage.setItem('carrinho', JSON.stringify(novoCarrinho));
 }, { deep: true });
@@ -83,7 +81,7 @@ const totalCompra = computed(() => {
           <div class="emparelhado">
             <div class="titulo">
               <h3>{{ item.titulo }}</h3>
-              <p>Preço: R${{ item.valor.toFixed(2) }}</p>
+              <p>Preço: R${{ item.valor && !isNaN(item.valor) ? item.valor.toFixed(2) : '0' }}</p>
             </div>
 
             <div class="controles-quantidade">
@@ -92,7 +90,7 @@ const totalCompra = computed(() => {
               <button @click="aumentarQuantidade(item)">+</button>
             </div>
             <div class="info-subtotal">
-              <p>R${{ (item.valor * item.quantidade).toFixed(2) }}</p>
+              <p>R${{ (item.valor * item.quantidade && !isNaN(item.valor * item.quantidade)) ? (item.valor * item.quantidade).toFixed(2) : '0' }}</p>
             </div>
           </div>
         </div>

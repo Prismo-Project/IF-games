@@ -2,117 +2,9 @@
 import { ref, onMounted, watch } from "vue";
 import { useRouter } from 'vue-router';
 
-const jogos = ref([
-  {
-    id: 1,
-    imagem: '../Images/Elden Ring.png',
-    titulo: "Elden Ring",
-    desenvolvedor: "FromSoftware",
-    valor: 199.90,
-    plataformas: ["PS5", "Xbox Series X", "PC"],
-    lancamento: "2022"
-  },
-  {
-    id: 2,
-    imagem: '../Images/Cyberpunk 2077.png',
-    titulo: "Cyberpunk 2077",
-    desenvolvedor: "CD Project Red",
-    valor: 199.90,
-    plataformas: ["PS4", "Xbox Series X", "PC", "PS5"],
-    lancamento: "2020"
-  },
-  {
-    id: 3,
-    imagem: '/Images/Dead Cells.png',
-    titulo: "Dead Cells",
-    desenvolvedor: "Playdigious",
-    valor: 39.90,
-    plataformas: ["Switch", "PS4", "PC", "Xbox Series One"],
-    lancamento: "2022"
-  },
-  {
-    id: 4,
-    imagem: '/Images/Fallout 4.png',
-    titulo: "Fallout 4",
-    desenvolvedor: "Bethesda",
-    valor: 89.90,
-    plataformas: ["Xbox One", "PS4", "Switch" ,"PC"],
-    lancamento: "2015"
-  },
-  {
-    id: 5,
-    imagem: '../Images/Life is Strange DE.png',
-    titulo: "Life is Strange ",
-    desenvolvedor: "Square Enix",
-    valor: 299.90,
-    plataformas: ["Xbox Series X", "PC", "Switch", "PS5"],
-    lancamento: "2024"
-  },
-  {
-    id: 6,
-    imagem: '/Images/The elders scrolls V.png',
-    titulo: "The Elder scrolls V",
-    desenvolvedor: "Bethesda",
-    valor: 89.90,
-    plataformas: ["PS4", "Xbox Series X", "PC"],
-    lancamento: "2023"
-  },
-  {
-    id: 7,
-    imagem: '/Images/The Last of Us.png',
-    titulo: "The Last of Us",
-    desenvolvedor: "Naughty Dog",
-    valor: 349.90,
-    plataformas: ["PS4", "PS5", "PC"],
-    lancamento: "2024"
-  },
-  {
-    id: 8,
-    imagem: '/Images/Until Dawn.png',
-    titulo: "Until Dawn",
-    desenvolvedor: "Supermassive Games",
-    valor: 224.90,
-    plataformas: ["PS4","PS5", "PC"],
-    lancamento: "2015"
-  },
-  {
-    id: 9,
-    imagem: '/Images/Sea of thieves.png',
-    titulo: "Sea of Thieves",
-    desenvolvedor: "Rare",
-    valor: 89.90,
-    plataformas: ["PS5", "Xbox Series X","Xbox Series S", "PC"],
-    lancamento: "2018"
-  },
-  {
-    id: 10,
-    imagem: '/Images/Street fighter.png',
-    titulo: "Street Fighter 6",
-    desenvolvedor: "Capcom",
-    valor: 169.90,
-    plataformas: ["PS5", "Xbox Series X", "PC"],
-    lancamento: "2023"
-  },
-  {
-    id: 11,
-    imagem: '/Images/Persona 3 Reload.png',
-    titulo: "Persona 3 Reload",
-    desenvolvedor: "Atlus",
-    valor: 219.90,
-    plataformas: ["PS5", "Xbox Series X", "PC"],
-    lancamento: "2024"
-  },
-  {
-    id: 12,
-    imagem: '/Images/Metal Gear.png',
-    titulo: "Metal Gear Solid A",
-    desenvolvedor: "Konami",
-    valor: 349.90,
-    plataformas: ["PS5", "Xbox Series X", "PC"],
-    lancamento: "2023"
-  }
- 
-]);
+import { todosJogos } from '@/data/jogos';
+
+const jogos = ref(todosJogos); 
 
 // router
 const router = useRouter();
@@ -139,12 +31,16 @@ watch(carrinho, (novoCarrinho) => {
 }, { deep: true });
 
 function adicionarAoCarrinho(jogo) {
+  if (!jogo) {
+    console.error("Jogo não encontrado");
+    return;
+  }
   const valor = typeof jogo.valor === 'string' ? parseFloat(jogo.valor.replace(',', '.')) : jogo.valor;
   
   const itemExistente = carrinho.value.find(i => i.id === jogo.id);
   
   if (itemExistente) {
-    itemExistente.quantidade = (itemExistente.quantidade || 1) + 1;
+    itemExistente.quantidade += 1;
   } else {
     const itemComValor = {
       ...jogo,
@@ -153,7 +49,7 @@ function adicionarAoCarrinho(jogo) {
     };
     carrinho.value.push(itemComValor);
   }
-  
+
   mostrarAlerta(jogo.titulo);
 }
 
@@ -414,7 +310,7 @@ template {
 }
 
 .card .img {
-  padding: 20px;
+  padding: 20px 20px 0 20px;
   text-align: center;
 }
 
@@ -422,7 +318,7 @@ template {
   object-fit: contain;
   transition: transform 0.3s;
   border-radius: 4px;
-  
+  width: 200px;
 }
 
 .card:hover .game-image {
@@ -430,7 +326,7 @@ template {
 }
 
 .card h2 {
-  padding: 0 20px;
+  padding: 0 20px 0 20px;
   font-size: 1.2rem;
   margin-top: 1rem;
 }
