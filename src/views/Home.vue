@@ -109,7 +109,7 @@ function mostrarAlerta(tituloJogo) {
   
   <div id="faixinha">
     <ul>
-      <li><img src="/public/Images/icons/lado-do-caminhao.png" alt=""><a href="#">
+      <li><span><img src="/public/Images/icons/lado-do-caminhao.png" alt=""></span><a href="#">
           <h3>Frete grátis para SC</h3>
         </a></li>
       <li class="prioridade"><img src="/public/Images/icons/estrela.png" alt=""><a href="#">
@@ -260,8 +260,13 @@ template {
 }
 
 #faixinha ul li img {
-  width: 40px;
+  width: 30px;
   margin-right: 15px;
+}
+
+#faixinha ul li span img{
+  width: 50px;
+  padding-top: 8px;
 }
 
 #faixinha ul li.prioridade {

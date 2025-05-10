@@ -14,16 +14,10 @@ h1 {
     padding: 20px;
 }
   
-.img img {
-    width: 170px;
-    height: auto;
-}
-  
 .img {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 10px;
 }
   
 .grid-container {
@@ -61,17 +55,6 @@ h1 {
   
 .card:hover {
     transform: scale(1.02);
-}
-  
-.comprar {
-    background-color: #28a745;
-    color: white;
-    padding: 8px 56px;
-    cursor: pointer;
-    margin-top: auto;
-    border: none;
-    font-size: 0.9rem;
-    outline: none;
 }
   
 .comprar:focus {
@@ -149,7 +132,7 @@ a{
     padding-left: 20px;
   }
   header span img{
-    border-right: #27AE60 1px solid;
+    border-right: #e94560 1px solid;
   }
 /*footer*/
 footer{
