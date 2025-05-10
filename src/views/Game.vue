@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, nextTick  } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 const route = useRoute()
@@ -10,7 +10,12 @@ const carrinho = ref([])
 const mensagemCarrinho = ref('');
 const mostrarMensagem = ref(false);
 
-
+defineProps({
+  id: {
+    type: [String, Number],
+    required: true
+  }
+})
 
 function mostrarAlerta(tituloJogo) {
   mensagemCarrinho.value = `🎮 "${tituloJogo}" adicionado ao carrinho!`;
@@ -65,13 +70,28 @@ function adicionarAoCarrinho(jogo) {
   mostrarAlerta(jogo.titulo);
 }
 
+const voltarParaHome = async () => {
+  await router.push('/');
+  await nextTick();
+
+  window.scrollTo({
+    top: 1000,
+    behavior: 'instant' 
+  });
+  await new Promise(resolve => setTimeout(resolve, 1));
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+};
+
 </script>
 
 <template>
   
   
   <div v-if="game" class="pagina-game">
-    <button @click="router.go(-1)" class="botao-voltar">◄ Voltar</button>
+    <button @click="voltarParaHome" class="botao-voltar">◄ Voltar</button>
     
     <div class="container-game">
       <div class="capa-container">
