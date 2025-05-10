@@ -301,7 +301,7 @@ h2#carrinho {
   position: absolute;
   top: 15px;
   right: 5px;
-  background: #1d8548;
+  background: #a51930;
   color: white;
   border-radius: 50%;
   width: 20px;

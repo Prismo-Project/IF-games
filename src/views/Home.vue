@@ -343,6 +343,7 @@ template {
 
 .card .text {
   padding: 0 20px 20px;
+  margin-top: auto;
 }
 
 .desenvolvedor {
@@ -367,6 +368,7 @@ template {
   cursor: pointer;
   font-size: 1rem;
   transition: background-color 0.3s;
+  
 }
 
 .comprar:hover {
@@ -436,7 +438,7 @@ template {
   position: absolute;
   top: 15px;
   right: 5px;
-  background: #1d8548;
+  background: #a51930;
   color: white;
   border-radius: 50%;
   width: 20px;

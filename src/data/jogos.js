@@ -6,7 +6,7 @@ export const todosJogos = [
     desenvolvedor: "FromSoftware",
     valor: 199.90,
     classificacao: "16+",
-    descricao: "Elden Ring é um RPG...", 
+    descricao: "Elden Ring é um RPG de ação em mundo aberto que mergulha o jogador em uma terra vasta e sombria conhecida como 'The Lands Between'. Desenvolvido por Hidetaka Miyazaki em colaboração com George R. R. Martin, o jogo combina combate desafiador, narrativa profunda e uma atmosfera envolvente. Com liberdade total de exploração, oferece segredos escondidos, masmorras mortais e uma trilha sonora épica.", 
     plataformas: ["PS5", "Xbox Series X", "PC"],
     lancamento: "2022"
   },
