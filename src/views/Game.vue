@@ -291,7 +291,7 @@ h2 {
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #27AE60;
+  background-color: #e94560;
   color: white;
   padding: 1rem 2rem;
   border-radius: 8px;
