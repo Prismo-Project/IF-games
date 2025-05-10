@@ -155,6 +155,7 @@ const todosJogos = [
 onMounted(() => {
   const gameId = parseInt(route.params.id)
   game.value = todosJogos.find(g => g.id === gameId)
+  
 
   const carrinhoSalvo = sessionStorage.getItem('carrinho')
   if (carrinhoSalvo) {
@@ -168,6 +169,7 @@ function adicionarAoCarrinho() {
 </script>
 
 <template>
+  
   
   <div v-if="game" class="pagina-game">
     <button @click="router.go(-1)" class="botao-voltar">◄ Voltar</button>
@@ -209,6 +211,35 @@ function adicionarAoCarrinho() {
     <h2>Jogo não encontrado</h2>
     <button @click="router.push('/')" class="botao-voltar">Voltar para a loja</button>
   </div>
+  <footer>
+    <div class="divisao1">
+      <p class="principal">IFgames</p>
+      <a href="https://www.facebook.com/?locale=pt_BR"><img src="/Images/icons/facebook.png" alt="facebook"></a>
+      <a href="https://www.instagram.com/"><img src="/Images/icons/instagram.png" alt="instagram"></a>
+      <a href="https://x.com/?lang=pt"><img src="/Images/icons/twitter.png" alt="twitter"></a>
+    </div>
+    <div class="divisao2">
+      <p class="principal">Contato</p>
+      <ul>
+        <li><img src="/Images/icons/Phone.png" alt="Telefone">
+          <p>+55 47 40045263</p>
+        </li>
+        <li><img src="/Images/icons/Clock.png" alt="Relógio">
+          <p>8h às 23h - Seg a Sex</p>
+        </li>
+        <li><img src="/Images/icons/Mail.png" alt="Email">
+          <p>contato@ifgames.com</p>
+        </li>
+      </ul>
+
+      <div class="cartoes">
+        <img src="/Images/paipalCard-Logo.png" alt="PayPal">
+        <img src="/Images/MasterCard-Logo.png" alt="MasterCard">
+        <img src="/Images/VISA-card-logo.png" alt="Visa">
+      </div>
+      <p class="transp">&copy; Alguns direitos reservados. IFgames 2025.</p>
+    </div>
+  </footer>
 </template>
 
 <style scoped>
@@ -221,7 +252,7 @@ function adicionarAoCarrinho() {
 .botao-voltar {
   background: none;
   border: none;
-  color: #27AE60;
+  color: #1a1a2e;
   font-size: 1rem;
   cursor: pointer;
   margin-bottom: 1rem;
@@ -286,12 +317,12 @@ h2 {
 
 .preco-container h3 {
   font-size: 1.8rem;
-  color: #27AE60;
+  color: #e94560;
   margin-bottom: 1rem;
 }
 
 .botao-comprar {
-  background-color: #27AE60;
+  background-color: #1a1a2e;
   color: white;
   border: none;
   padding: 0.8rem 1.5rem;
@@ -302,7 +333,7 @@ h2 {
 }
 
 .botao-comprar:hover {
-  background-color: #1e8a4a;
+  background-color: #0f3460;
 }
 
 .descricao {

@@ -156,7 +156,7 @@ div.nada {
   grid-template-columns: 1fr 1fr 1fr;
   text-align: center;
   justify-content: space-between;
-  border-bottom: 1px solid #27AE60;
+  border-bottom: 1px solid #1a1a2e;
   font-weight: bold;
   align-items: center;
 }
@@ -248,7 +248,7 @@ text-align: left;
 }
 
 h2#carrinho {
-  color: #28a745;
+  color: #1a1a2e;
   font-weight: 600;
   font-size: 1.8rem;
 }
@@ -257,7 +257,7 @@ h2#carrinho {
   margin-top: 30px;
   text-align: right;
   padding: 20px;
-  border-top: 2px solid #27AE60;
+  border-top: 2px solid #1a1a2e;
 }
 
 .total-compra {
@@ -267,7 +267,7 @@ h2#carrinho {
 }
 
 .finalizar-compra {
-  background-color: #27AE60;
+  background-color: #1a1a2e;
   color: white;
   border: none;
   padding: 12px 24px;
@@ -278,7 +278,7 @@ h2#carrinho {
 }
 
 .finalizar-compra:hover {
-  background-color: #1d8548;
+  background-color: #0f3460;
 }
 
 
