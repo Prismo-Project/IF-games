@@ -21,7 +21,7 @@ function mostrarAlerta(tituloJogo) {
 const todosJogos = [
 {
   id: 1,
-  imagem: '/public/Images/Elden Ring.png',
+  imagem: '/Images/Elden Ring.png',
   titulo: "Elden Ring",
   desenvolvedor: "FromSoftware",
   valor: 199.90,
@@ -32,7 +32,7 @@ const todosJogos = [
 },
 {
   id: 2,
-  imagem: '/public/Images/Cyberpunk 2077.png',
+  imagem: '/Images/Cyberpunk 2077.png',
   titulo: "Cyberpunk 2077",
   desenvolvedor: "CD Projekt Red",
   valor: 199.90,
@@ -43,7 +43,7 @@ const todosJogos = [
 },
 {
   id: 3,
-  imagem: '/public/Images/Dead Cells.png',
+  imagem: '/Images/Dead Cells.png',
   titulo: "Dead Cells",
   desenvolvedor: "Playdigious",
   valor: 39.90,
@@ -54,7 +54,7 @@ const todosJogos = [
 },
 {
   id: 4,
-  imagem: '/public/Images/Fallout 4.png',
+  imagem: '/Images/Fallout 4.png',
   titulo: "Fallout 4",
   desenvolvedor: "Bethesda",
   valor: 89.90,
@@ -65,7 +65,7 @@ const todosJogos = [
 },
 {
   id: 5,
-  imagem: '/public/Images/Life is Strange DE.png',
+  imagem: '/Images/Life is Strange DE.png',
   titulo: "Life is Strange: Double Exposure",
   desenvolvedor: "Square Enix",
   valor: 299.90,
@@ -76,7 +76,7 @@ const todosJogos = [
 },
 {
   id: 6,
-  imagem: '/public/Images/The elders scrolls V.png',
+  imagem: '/Images/The elders scrolls V.png',
   titulo: "The Elder Scrolls V: Skyrim",
   desenvolvedor: "Bethesda",
   valor: 89.90,
@@ -87,7 +87,7 @@ const todosJogos = [
 },
 {
   id: 7,
-  imagem: '/public/Images/The Last of Us.png',
+  imagem: '/Images/The Last of Us.png',
   titulo: "The Last of Us",
   desenvolvedor: "Naughty Dog",
   valor: 349.90,
@@ -98,7 +98,7 @@ const todosJogos = [
 },
 {
   id: 8,
-  imagem: '/public/Images/Until Dawn.png',
+  imagem: '/Images/Until Dawn.png',
   titulo: "Until Dawn",
   desenvolvedor: "Supermassive Games",
   valor: 224.90,
@@ -109,7 +109,7 @@ const todosJogos = [
 },
 {
   id: 9,
-  imagem: '/public/Images/Sea of thieves.png',
+  imagem: '/Images/Sea of thieves.png',
   titulo: "Sea of Thieves",
   desenvolvedor: "Rare",
   valor: 89.90,
@@ -120,7 +120,7 @@ const todosJogos = [
 },
 {
   id: 10,
-  imagem: '/public/Images/Street fighter.png',
+  imagem: '/Images/Street fighter.png',
   titulo: "Street Fighter 6",
   desenvolvedor: "Capcom",
   valor: 169.90,
@@ -131,7 +131,7 @@ const todosJogos = [
 },
 {
   id: 11,
-  imagem: '/public/Images/Persona 3 Reload.png',
+  imagem: '/Images/Persona 3 Reload.png',
   titulo: "Persona 3 Reload",
   desenvolvedor: "Atlus",
   valor: 219.90,
@@ -142,7 +142,7 @@ const todosJogos = [
 },
 {
   id: 12,
-  imagem: '/public/Images/Metal Gear.png',
+  imagem: '/Images/Metal Gear.png',
   titulo: "Metal Gear Solid Δ: Snake Eater",
   desenvolvedor: "Konami",
   valor: 349.90,
