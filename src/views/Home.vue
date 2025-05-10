@@ -2,117 +2,9 @@
 import { ref, onMounted, watch } from "vue";
 import { useRouter } from 'vue-router';
 
-const jogos = ref([
-  {
-    id: 1,
-    imagem: 'public/Images/Elden Ring.png',
-    titulo: "Elden Ring",
-    desenvolvedor: "FromSoftware",
-    valor: 199.90,
-    plataformas: ["PS5", "Xbox Series X", "PC"],
-    lancamento: "2022"
-  },
-  {
-    id: 2,
-    imagem: 'public/Images/Cyberpunk 2077.png',
-    titulo: "Cyberpunk 2077",
-    desenvolvedor: "CD Project Red",
-    valor: 199.90,
-    plataformas: ["PS4", "Xbox Series X", "PC", "PS5"],
-    lancamento: "2020"
-  },
-  {
-    id: 3,
-    imagem: 'public/Images/Dead Cells.png',
-    titulo: "Dead Cells",
-    desenvolvedor: "Playdigious",
-    valor: 39.90,
-    plataformas: ["Switch", "PS4", "PC", "Xbox Series One"],
-    lancamento: "2022"
-  },
-  {
-    id: 4,
-    imagem: 'public/Images/Fallout 4.png',
-    titulo: "Fallout 4",
-    desenvolvedor: "Bethesda",
-    valor: 89.90,
-    plataformas: ["Xbox One", "PS4", "Switch" ,"PC"],
-    lancamento: "2015"
-  },
-  {
-    id: 5,
-    imagem: 'public/Images/Life is Strange DE.png',
-    titulo: "Life is Strange ",
-    desenvolvedor: "Square Enix",
-    valor: 299.90,
-    plataformas: ["Xbox Series X", "PC", "Switch", "PS5"],
-    lancamento: "2024"
-  },
-  {
-    id: 6,
-    imagem: 'public/Images/The elders scrolls V.png',
-    titulo: "The Elder scrolls V",
-    desenvolvedor: "Bethesda",
-    valor: 89.90,
-    plataformas: ["PS4", "Xbox Series X", "PC"],
-    lancamento: "2023"
-  },
-  {
-    id: 7,
-    imagem: 'public/Images/The Last of Us.png',
-    titulo: "The Last of Us",
-    desenvolvedor: "Naughty Dog",
-    valor: 349.90,
-    plataformas: ["PS4", "PS5", "PC"],
-    lancamento: "2024"
-  },
-  {
-    id: 8,
-    imagem: 'public/Images/Until Dawn.png',
-    titulo: "Until Dawn",
-    desenvolvedor: "Supermassive Games",
-    valor: 224.90,
-    plataformas: ["PS4","PS5", "PC"],
-    lancamento: "2015"
-  },
-  {
-    id: 9,
-    imagem: 'public/Images/Sea of thieves.png',
-    titulo: "Sea of Thieves",
-    desenvolvedor: "Rare",
-    valor: 89.90,
-    plataformas: ["PS5", "Xbox Series X","Xbox Series S", "PC"],
-    lancamento: "2018"
-  },
-  {
-    id: 10,
-    imagem: 'public/Images/Street fighter.png',
-    titulo: "Street Fighter 6",
-    desenvolvedor: "Capcom",
-    valor: 169.90,
-    plataformas: ["PS5", "Xbox Series X", "PC"],
-    lancamento: "2023"
-  },
-  {
-    id: 11,
-    imagem: 'public/Images/Persona 3 Reload.png',
-    titulo: "Persona 3 Reload",
-    desenvolvedor: "Atlus",
-    valor: 219.90,
-    plataformas: ["PS5", "Xbox Series X", "PC"],
-    lancamento: "2024"
-  },
-  {
-    id: 12,
-    imagem: 'public/Images/Metal Gear.png',
-    titulo: "Metal Gear Solid A",
-    desenvolvedor: "Konami",
-    valor: 349.90,
-    plataformas: ["PS5", "Xbox Series X", "PC"],
-    lancamento: "2023"
-  }
- 
-]);
+import { todosJogos } from '@/data/jogos';
+
+const jogos = ref(todosJogos); 
 
 // router
 const router = useRouter();
@@ -139,12 +31,16 @@ watch(carrinho, (novoCarrinho) => {
 }, { deep: true });
 
 function adicionarAoCarrinho(jogo) {
+  if (!jogo) {
+    console.error("Jogo não encontrado");
+    return;
+  }
   const valor = typeof jogo.valor === 'string' ? parseFloat(jogo.valor.replace(',', '.')) : jogo.valor;
   
   const itemExistente = carrinho.value.find(i => i.id === jogo.id);
   
   if (itemExistente) {
-    itemExistente.quantidade = (itemExistente.quantidade || 1) + 1;
+    itemExistente.quantidade += 1;
   } else {
     const itemComValor = {
       ...jogo,
@@ -153,7 +49,7 @@ function adicionarAoCarrinho(jogo) {
     };
     carrinho.value.push(itemComValor);
   }
-  
+
   mostrarAlerta(jogo.titulo);
 }
 
@@ -213,7 +109,7 @@ function mostrarAlerta(tituloJogo) {
   
   <div id="faixinha">
     <ul>
-      <li><img src="/public/Images/icons/lado-do-caminhao.png" alt=""><a href="#">
+      <li><span><img src="/public/Images/icons/lado-do-caminhao.png" alt=""></span><a href="#">
           <h3>Frete grátis para SC</h3>
         </a></li>
       <li class="prioridade"><img src="/public/Images/icons/estrela.png" alt=""><a href="#">
@@ -291,7 +187,6 @@ template {
 #banner {
   display: flex;
   padding: 0 200px 10px 300px;
-  border-bottom: #27AE60 2px solid;
   align-items: center;
 }
 
@@ -301,8 +196,8 @@ template {
 }
 
 #banner #text span p {
-  color: #27AE60;
-  border: #27AE60 1px solid;
+  color: #e94560;
+  border: #e94560 3px solid;
   border-radius: 5px;
   padding: 10px;
   display: inline-block;
@@ -325,7 +220,7 @@ template {
   color: white;
   font-size: 20px;
   padding: 15px 30px;
-  background-color: #27AE60;
+  background-color: #1a1a2e;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -333,7 +228,7 @@ template {
 }
 
 #banner #text button:hover {
-  background-color: #1e8a4a;
+  background-color: #0f3460;
 }
 
 #banner #image {
@@ -348,31 +243,40 @@ template {
 /* Faixa de informações */
 #faixinha ul {
   display: flex;
-  border-bottom: #27AE60 2px solid;
-  padding: 50px 0 50px 0;
+  background-color: #0f3460;
+  padding: 30px 0;
   justify-content: center;
+  margin: 0;
 }
 
 #faixinha ul li {
   display: flex;
   align-items: center;
+  padding: 0 2rem;
+}
+
+#faixinha ul li a {
+  text-decoration: none;
 }
 
 #faixinha ul li img {
-  width: 40px;
+  width: 30px;
   margin-right: 15px;
 }
 
+#faixinha ul li span img{
+  width: 50px;
+  padding-top: 8px;
+}
+
 #faixinha ul li.prioridade {
-  border-left: #7B7881 2px solid;
-  margin-left: 100px;
-  padding-left: 100px;
+  border-left: rgba(255,255,255,0.2) 2px solid;
 }
 
 #faixinha h3 {
   font-size: 1.5rem;
   font-weight: 500;
-  color: #382C2C;
+  color: white;
 }
 
 /* Grid de jogos */
@@ -380,7 +284,7 @@ template {
   text-align: center;
   margin: 50px 0 30px;
   font-size: 2.5rem;
-  color: #333;
+  color: #1a1a2e;
 }
 
 .wrapper {
@@ -391,16 +295,18 @@ template {
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat((4, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 30px;
   padding: 20px 0;
 }
 
 .card {
   background: white;
+  border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   transition: transform 0.3s, box-shadow 0.3s;
+  border: 1px solid #eee;
 }
 
 .card:hover {
@@ -409,14 +315,15 @@ template {
 }
 
 .card .img {
-  padding: 0px 20px 20px 20px;
+  padding: 20px 20px 0 20px;
   text-align: center;
 }
 
 .game-image {
   object-fit: contain;
   transition: transform 0.3s;
-  border-radius: 4PX;
+  border-radius: 4px;
+  width: 200px;
 }
 
 .card:hover .game-image {
@@ -424,31 +331,34 @@ template {
 }
 
 .card h2 {
-  padding: 0px 20px 5px;
+  padding: 0 20px 0 20px;
   font-size: 1.2rem;
+  margin-top: 1rem;
 }
 
 .card h2 a {
-  color: #333;
+  color: #1a1a2e;
   text-decoration: none;
+  font-weight: 600;
 }
 
 .card h2 a:hover {
-  color: #27AE60;
+  color: #e94560;
 }
 
 .card .text {
   padding: 0 20px 20px;
+  margin-top: auto;
 }
 
 .desenvolvedor {
   color: #666;
-  margin-bottom: 10px;
+  margin: 0.5rem 0;
   font-size: 0.9rem;
 }
 
 .card h3 {
-  color: #27AE60;
+  color: #e94560;
   font-size: 1.4rem;
   margin: 10px 0;
 }
@@ -456,17 +366,18 @@ template {
 .comprar {
   width: 100%;
   padding: 10px;
-  background-color: #27AE60;
+  background-color: #1a1a2e;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 1rem;
   transition: background-color 0.3s;
+  
 }
 
 .comprar:hover {
-  background-color: #1e8a4a;
+  background-color: #0f3460;
 }
 
 .comprar:active {
@@ -478,7 +389,7 @@ template {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: #27AE60;
+  background-color: #e94560;
   color: white;
   padding: 16px 24px;
   border-radius: 8px;
@@ -510,7 +421,7 @@ template {
   position: absolute;
   top: 15px;
   right: 5px;
-  background: #1d8548;
+  background: #e94560;
   color: white;
   border-radius: 50%;
   width: 20px;
@@ -522,38 +433,27 @@ template {
   font-weight: bold;
 }
 
-/* Footer */
-footer{
-    background-color: #2c3e60;
-    margin-top: 100px;
-    color: #F1F1F1;
-    padding: 40px;
-    display: flex;
-  }
-  footer div.divisao1{
-    margin: 0 1100px 0 100px;
-  }
-  footer div p.principal{
-    margin: 0 0 20px 0;
-    font-weight: 450;
-  }
-  footer div.divisao1 img{
-    margin: 0 20px 0 0;
-  }
-  footer div ul li{
-    list-style: none;
-    display: flex;
-  }
-  footer div.divisao2 ul li img{
-    margin: 0 10px 20px -40px;
-  }
-  footer div.cartoes img{
-    margin: 40px 15px 70px 0;
-  }
-  div.footinho{
-  border-top: #F1F1F1 1px solid;
-  }
-  p.transp{
-    margin: 0 0 0 -620px;
-  }
+/* Contador do carrinho */
+.carrinho-icon {
+  position: relative;
+  display: inline-block;
+}
+
+.contador {
+  position: absolute;
+  top: 15px;
+  right: 5px;
+  background: #a51930;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+
 </style>
