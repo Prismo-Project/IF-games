@@ -155,7 +155,10 @@ const todosJogos = [
 onMounted(() => {
   const gameId = parseInt(route.params.id)
   game.value = todosJogos.find(g => g.id === gameId)
-  window.scrollTo(0, 0) 
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
   
 
   const carrinhoSalvo = sessionStorage.getItem('carrinho')
